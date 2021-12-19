@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#006257"
     tools:context=".Signup">
 
     <ScrollView
@@ -16,7 +17,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:background="@color/white"
             android:padding="25dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/circularImageStudentId"
@@ -25,8 +33,12 @@
                 android:layout_gravity="center"
                 android:padding="2dp"
                 android:src="@drawable/avatar"
-                app:civ_border_color="#373737"
-                app:civ_border_width="1dp" />
+                app:civ_border_color="#B3B3B3"
+                app:civ_border_width="2dp" />
+
+        </LinearLayout>
+
+
 
 
             <EditText

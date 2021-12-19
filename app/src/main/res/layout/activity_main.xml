@@ -18,11 +18,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/mainActivity_toolbarId"
-        android:gravity="center"
-        android:padding="10dp"
-        android:orientation="vertical"
         android:background="#006257"
-        >
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/mainActivityImageStudentId"
@@ -38,9 +37,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Avijit Adhikary"
+            android:textColor="#FFFFFF"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="#FFFFFF">
+            android:textStyle="bold">
 
         </TextView>
 
@@ -48,9 +47,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Student"
+            android:textColor="#FFFFFF"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="#FFFFFF">
+            android:textStyle="bold">
 
         </TextView>
 
