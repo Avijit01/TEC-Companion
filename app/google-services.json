@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1050918843122",
+    "project_id": "tec-companion",
+    "storage_bucket": "tec-companion.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1050918843122:android:7e7a1107a415a815fcd66b",
+        "android_client_info": {
+          "package_name": "com.example.teccompanion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1050918843122-jvrq0436rgmbt02besq0sah0fgeq1j0s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJZ5jIuVruV7Drd0iyqk0jyz-VAwA8iXI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1050918843122-jvrq0436rgmbt02besq0sah0fgeq1j0s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
