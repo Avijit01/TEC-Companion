@@ -33,14 +33,14 @@ import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class Signup extends AppCompatActivity
-{
+public class SignupTeacher extends AppCompatActivity {
+
+    private Toolbar mToolbar;
     private Button createAccountButton;
     private CircleImageView userImage;
-    private EditText userFullName, userId, userBatch, userSession, userPhone, userGuardianPhone, userCurrentAddress, userEmail, userPassword;
+    private EditText userFullName, userPhone, userCurrentAddress, userEmail, userPassword;
     private String fullName, id, batch, session, phone, guardianPhone, currentAddress, email, password, userType, level;
     private TextView alreadyHaveAnAccount;
-    private Toolbar mToolbar;
 
     private FirebaseAuth mAuth;
     private DatabaseReference rootRef;
@@ -55,12 +55,13 @@ public class Signup extends AppCompatActivity
     private int flag = 0;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
+        setContentView(R.layout.activity_signup_teacher);
 
-        mToolbar = (Toolbar) findViewById(R.id.signup_toolbarId);
+        mToolbar = (Toolbar) findViewById(R.id.SignupTeacher_toolbarId);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("Registration");
 
@@ -68,7 +69,6 @@ public class Signup extends AppCompatActivity
         //currentUserID = mAuth.getCurrentUser().getUid();
         rootRef = FirebaseDatabase.getInstance().getReference();
         userProfileImagesRef = FirebaseStorage.getInstance().getReference().child("User Profile Images");
-
 
         InitializeFields();
 
@@ -93,25 +93,41 @@ public class Signup extends AppCompatActivity
 
         createAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) 
+            public void onClick(View v)
             {
                 CreateNewAccount();
             }
         });
+
+    }
+
+    private void InitializeFields()
+    {
+        createAccountButton = (Button) findViewById(R.id.SignupTeacher_CreateAccountButtonId);
+
+        userFullName = (EditText) findViewById(R.id.SignupTeacher_FullNameId);
+        userPhone = (EditText) findViewById(R.id.SignupTeacher_PhoneId);
+        userCurrentAddress = (EditText) findViewById(R.id.SignupTeacher_CurrentAddressId);
+        userEmail = (EditText) findViewById(R.id.SignupTeacher_EmailId);
+        userPassword = (EditText) findViewById(R.id.SignupTeacher_PasswordId);
+
+        alreadyHaveAnAccount = (TextView) findViewById(R.id.SignupTeacher_alreadyHaveAnAccountId);
+        loadingBar = new ProgressDialog(this);
+        userImage = (CircleImageView) findViewById(R.id.SignupTeacher_circularImageTeacherId);
     }
 
     private void CreateNewAccount()
     {
         fullName = userFullName.getText().toString();
-        id = userId.getText().toString();
-        batch = userBatch.getText().toString();
-        session = userSession.getText().toString();
+        id = "";
+        batch = "";
+        session = "";
         phone = userPhone.getText().toString();
-        guardianPhone = userGuardianPhone.getText().toString();
+        guardianPhone = "";
         currentAddress = userCurrentAddress.getText().toString();
         email = userEmail.getText().toString();
         password = userPassword.getText().toString();
-        userType = "Student";
+        userType = "Teacher";
         level = "0";
 
         if(TextUtils.isEmpty(fullName))
@@ -119,30 +135,12 @@ public class Signup extends AppCompatActivity
             Toast.makeText(this, "Please enter full name", Toast.LENGTH_SHORT).show();
         }
 
-        if(TextUtils.isEmpty(id))
-        {
-            Toast.makeText(this, "Please enter ID", Toast.LENGTH_SHORT).show();
-        }
-
-        if(TextUtils.isEmpty(batch))
-        {
-            Toast.makeText(this, "Please enter batch", Toast.LENGTH_SHORT).show();
-        }
-
-        if(TextUtils.isEmpty(session))
-        {
-            Toast.makeText(this, "Please enter session", Toast.LENGTH_SHORT).show();
-        }
 
         if(TextUtils.isEmpty(phone))
         {
             Toast.makeText(this, "Please enter phone No.", Toast.LENGTH_SHORT).show();
         }
 
-        if(TextUtils.isEmpty(guardianPhone))
-        {
-            Toast.makeText(this, "Please enter guardian phone No.", Toast.LENGTH_SHORT).show();
-        }
 
         if(TextUtils.isEmpty(currentAddress))
         {
@@ -217,30 +215,30 @@ public class Signup extends AppCompatActivity
                                                                 {
                                                                     if(task.isSuccessful())
                                                                     {
-                                                                        Toast.makeText(Signup.this, "Database Updated Successfully", Toast.LENGTH_SHORT).show();
+                                                                        Toast.makeText(SignupTeacher.this, "Database Updated Successfully", Toast.LENGTH_SHORT).show();
                                                                     }
                                                                     else
                                                                     {
                                                                         String message = task.getException().toString();
-                                                                        Toast.makeText(Signup.this, "Error: " +message, Toast.LENGTH_SHORT).show();
+                                                                        Toast.makeText(SignupTeacher.this, "Error: " +message, Toast.LENGTH_SHORT).show();
                                                                     }
                                                                 }
                                                             });
                                                 }
                                             });
 
-                                            Toast.makeText(Signup.this, "Image Uploaded Successfully", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(SignupTeacher.this, "Image Uploaded Successfully", Toast.LENGTH_SHORT).show();
                                         }
 
                                         else
                                         {
                                             String msg = task.getException().toString();
-                                            Toast.makeText(Signup.this, "Error: " +msg, Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(SignupTeacher.this, "Error: " +msg, Toast.LENGTH_SHORT).show();
                                         }
                                     }
                                 });
 
-/**/
+                                /**/
 
 
 
@@ -288,39 +286,19 @@ public class Signup extends AppCompatActivity
                       */
 
                                 SendUserToMainActivity();
-                                Toast.makeText(Signup.this, "Account Created Successfully...", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignupTeacher.this, "Account Created Successfully...", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
                             }
                             else
                             {
                                 String message = task.getException().toString();
-                                Toast.makeText(Signup.this, "Error: " + message, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignupTeacher.this, "Error: " + message, Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
                             }
                         }
                     });
         }
     }
-
-
-
-    private void InitializeFields()
-    {
-        createAccountButton = (Button) findViewById(R.id.createAccountButtonId);
-        userFullName = (EditText) findViewById(R.id.signupFullNameId);
-        userId = (EditText) findViewById(R.id.signupIdId);
-        userBatch = (EditText) findViewById(R.id.signupBatchId);
-        userSession = (EditText) findViewById(R.id.signupSessionId);
-        userPhone = (EditText) findViewById(R.id.signupPhoneId);
-        userGuardianPhone = (EditText) findViewById(R.id.signupGuardianPhoneId);
-        userCurrentAddress = (EditText) findViewById(R.id.signupCurrentAddressId);
-        userEmail = (EditText) findViewById(R.id.signupEmailId);
-        userPassword = (EditText) findViewById(R.id.signupPasswordId);
-        alreadyHaveAnAccount = (TextView) findViewById(R.id.alreadyHaveAnAccountId);
-        loadingBar = new ProgressDialog(this);
-        userImage = (CircleImageView) findViewById(R.id.circularImageStudentId);
-    }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
@@ -376,7 +354,7 @@ public class Signup extends AppCompatActivity
 
     private void SendUserToLoginActivity()
     {
-        Intent loginIntent = new Intent(Signup.this, Login.class);
+        Intent loginIntent = new Intent(SignupTeacher.this, Login.class);
         loginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(loginIntent);
         finish();
@@ -384,7 +362,7 @@ public class Signup extends AppCompatActivity
 
     private void SendUserToMainActivity()
     {
-        Intent mainIntent = new Intent(Signup.this, MainActivity.class);
+        Intent mainIntent = new Intent(SignupTeacher.this, MainActivity.class);
         mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(mainIntent);
         finish();

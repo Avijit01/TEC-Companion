@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    tools:context=".StudentVerifyProfile">
+
+    <include
+        android:id="@+id/studentVerifyProfile_toolbarId"
+        layout="@layout/app_bar_layout"
+        ></include>
+
+
+    <ScrollView
+        android:id="@+id/studentVerifyProfile_ScrollId"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/studentVerifyProfile_toolbarId">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/studentVerifyProfileLayoutId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#006257"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/studentVerifyProfile_ImageStudentId"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:layout_gravity="center"
+                    android:padding="2dp"
+                    android:src="@drawable/avatar"
+                    app:civ_border_color="#FFFFFF"
+                    app:civ_border_width="2dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="25dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <TextView
+                        android:id="@+id/studentVerifyProfile_FullNameHintId"
+                        android:layout_width="60dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="2"
+                        android:drawableStart="@drawable/custom_full_name_icon"
+                        android:text=" Name: "
+                        android:gravity="center|left"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/studentVerifyProfile_FullNameId"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="2"
+                        android:text="Full Name"
+                        android:gravity="center|left"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <TextView
+                        android:id="@+id/studentVerifyProfile_IDHintId"
+                        android:layout_width="60dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="2"
+                        android:drawableStart="@drawable/custom_id_icon"
+                        android:text=" ID: "
+                        android:gravity="center|left"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/studentVerifyProfile_IDId"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="2"
+                        android:text="ID"
+                        android:gravity="center|left"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="2"
+                        android:drawableStart="@drawable/custom_batch_icon"
+                        android:text=" Batch: "
+                        android:gravity="center|left"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/studentVerifyProfile_BatchId"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="2"
+                        android:text="Batch"
+                        android:gravity="center|left"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <TextView
+                        android:id="@+id/studentVerifyProfile_SessionHintId"
+                        android:layout_width="60dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="2"
+                        android:drawableStart="@drawable/custom_session_icon"
+                        android:text=" Session: "
+                        android:gravity="center|left"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/studentVerifyProfile_SessionId"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="2"
+                        android:text="Session"
+                        android:gravity="center|left"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="2"
+                        android:drawableStart="@drawable/custom_phone_no_icon"
+                        android:text=" Phone No.: "
+                        android:gravity="center|left"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/studentVerifyProfile_PhoneNoId"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="2"
+                        android:text="Phone No."
+                        android:gravity="center|left"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="5dp"
+                    android:weightSum="4">
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:drawableStart="@drawable/custom_guardian_phone_no_icon"
+                        android:text=" Guardian\n Phone No.: "
+                        android:gravity="center|left"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/studentVerifyProfile_GuardPhoneNoId"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:text="G.Phone No."
+                        android:gravity="center|left"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="8dp"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="2"
+                        android:drawableStart="@drawable/custom_address_icon"
+                        android:text=" Address:"
+                        android:gravity="center|left"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/studentVerifyProfile_AddressId"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="2"
+                        android:text="Address"
+                        android:gravity="center|left"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="2"
+                        android:drawableStart="@drawable/custom_email_icon"
+                        android:text=" Email: "
+                        android:gravity="center|left"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/studentVerifyProfile_EmailId"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="2"
+                        android:text="Email"
+                        android:gravity="center|left"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    >
+
+                    <Button
+                        android:id="@+id/studentVerifyProfile_AcceptButtonId"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/custom_button"
+                        android:text="Accept"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp" />
+
+                    <Button
+                        android:id="@+id/studentVerifyProfile_RejectButtonId"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/custom_button_reject"
+                        android:text="Reject"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -6,64 +6,63 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".AdminHome">
 
     <include
-        android:id="@+id/mainActivity_toolbarId"
+        android:id="@+id/AdminHome_toolbarId"
         layout="@layout/app_bar_layout"
         ></include>
 
     <LinearLayout
-        android:id="@+id/profileLayoutId"
+        android:id="@+id/AdminHome_LayoutId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/mainActivity_toolbarId"
+        android:layout_below="@+id/AdminHome_toolbarId"
         android:background="#006257"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="10dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/mainActivity_ImageStudentId"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:id="@+id/AdminHome_ImageId"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
             android:layout_gravity="center"
             android:padding="2dp"
             android:src="@drawable/avatar"
             app:civ_border_color="#FFFFFF"
-            app:civ_border_width="1dp" />
+            app:civ_border_width="2dp" />
 
         <TextView
-            android:id="@+id/mainActivity_StudentFullName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Student Name"
+            android:text="ADMIN"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:textStyle="bold">
 
         </TextView>
 
-
     </LinearLayout>
-
-
 
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:rowCount="2"
+        android:layout_below="@+id/AdminHome_LayoutId"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:columnCount="2"
-        android:layout_margin="20dp"
-        android:layout_below="@+id/profileLayoutId"
-        >
+        android:rowCount="2">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/AdminHome_StudentVerifyId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="0"
-            android:layout_column="0"
             android:layout_rowWeight="1"
+            android:layout_column="0"
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
             android:layout_margin="8dp"
@@ -85,7 +84,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Student List"
+                    android:text="Student Verification"
                     android:textAlignment="center"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -93,108 +92,106 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/AdminHome_TeacherVerifyId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="0"
-            android:layout_column="1"
-            android:layout_gravity="fill"
             android:layout_rowWeight="1"
+            android:layout_column="1"
             android:layout_columnWeight="1"
+            android:layout_gravity="fill"
             android:layout_margin="8dp"
             app:cardCornerRadius="8dp"
-            app:cardElevation="8dp"
-            >
+            app:cardElevation="8dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_gravity="center_vertical|center_horizontal"
                 android:gravity="center"
-                android:layout_gravity="center_vertical|center_horizontal">
+                android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/teacherlist"/>
+                    android:src="@drawable/teacherlist" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Teacher List"
-                    android:textStyle="bold"
-                    android:textAlignment="center"/>
+                    android:text="Teacher Verification"
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/chatButtonMainActivityId"
+            android:id="@+id/AdminHome_ChatId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="1"
-            android:layout_column="0"
-            android:layout_gravity="fill"
             android:layout_rowWeight="1"
+            android:layout_column="0"
             android:layout_columnWeight="1"
+            android:layout_gravity="fill"
             android:layout_margin="8dp"
             app:cardCornerRadius="8dp"
-            app:cardElevation="8dp"
-            >
+            app:cardElevation="8dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_gravity="center_vertical|center_horizontal"
                 android:gravity="center"
-                android:layout_gravity="center_vertical|center_horizontal">
+                android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/chat"/>
+                    android:src="@drawable/chat" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Chat"
-                    android:textStyle="bold"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/documentButtonMainId"
+            android:id="@+id/AdminHome_DocumentId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="1"
-            android:layout_column="1"
-            android:layout_gravity="fill"
             android:layout_rowWeight="1"
+            android:layout_column="1"
             android:layout_columnWeight="1"
+            android:layout_gravity="fill"
             android:layout_margin="8dp"
             app:cardCornerRadius="8dp"
-            app:cardElevation="8dp"
-            >
+            app:cardElevation="8dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_gravity="center_vertical|center_horizontal"
                 android:gravity="center"
-                android:layout_gravity="center_vertical|center_horizontal">
+                android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/document"/>
+                    android:src="@drawable/document" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Document"
-                    android:textStyle="bold"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>

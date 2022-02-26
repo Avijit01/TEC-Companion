@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Signup">
+    tools:context=".SignupTeacher">
 
     <include
-        android:id="@+id/signup_toolbarId"
+        android:id="@+id/SignupTeacher_toolbarId"
         layout="@layout/app_bar_layout"
         ></include>
 
@@ -29,7 +29,7 @@
                 android:orientation="vertical">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/circularImageStudentId"
+                    android:id="@+id/SignupTeacher_circularImageTeacherId"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_gravity="center"
@@ -42,7 +42,7 @@
 
 
             <EditText
-                android:id="@+id/signupFullNameId"
+                android:id="@+id/SignupTeacher_FullNameId"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
@@ -56,53 +56,9 @@
                 android:paddingEnd="12dp"
                 android:textSize="15sp" />
 
-            <EditText
-                android:id="@+id/signupIdId"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/custom_input"
-                android:drawableStart="@drawable/custom_id_icon"
-                android:drawablePadding="12dp"
-                android:ems="10"
-                android:hint="ID"
-                android:inputType="number"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
-                android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/signupBatchId"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/custom_input"
-                android:drawableStart="@drawable/custom_batch_icon"
-                android:drawablePadding="12dp"
-                android:ems="10"
-                android:hint="Batch Ex: Batch-01"
-                android:inputType="text"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
-                android:textSize="15sp" />
-
-            <EditText
-                android:id="@+id/signupSessionId"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/custom_input"
-                android:drawableStart="@drawable/custom_session_icon"
-                android:drawablePadding="12dp"
-                android:ems="10"
-                android:hint="Session Ex: 2016-17"
-                android:inputType="text"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
-                android:textSize="15sp" />
-
-            <EditText
-                android:id="@+id/signupPhoneId"
+                android:id="@+id/SignupTeacher_PhoneId"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
@@ -116,23 +72,9 @@
                 android:paddingEnd="12dp"
                 android:textSize="15sp" />
 
-            <EditText
-                android:id="@+id/signupGuardianPhoneId"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/custom_input"
-                android:drawableStart="@drawable/custom_guardian_phone_no_icon"
-                android:drawablePadding="12dp"
-                android:ems="10"
-                android:hint="Guardian Phone No."
-                android:inputType="number"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
-                android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/signupCurrentAddressId"
+                android:id="@+id/SignupTeacher_CurrentAddressId"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
@@ -147,7 +89,7 @@
                 android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/signupEmailId"
+                android:id="@+id/SignupTeacher_EmailId"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
@@ -162,7 +104,7 @@
                 android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/signupPasswordId"
+                android:id="@+id/SignupTeacher_PasswordId"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
@@ -176,7 +118,7 @@
                 android:textSize="15sp" />
 
             <Button
-                android:id="@+id/createAccountButtonId"
+                android:id="@+id/SignupTeacher_CreateAccountButtonId"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
@@ -187,7 +129,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/alreadyHaveAnAccountId"
+                android:id="@+id/SignupTeacher_alreadyHaveAnAccountId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"

@@ -7,18 +7,32 @@
         <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/address.xml" value="0.3828125" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/custom_address_icon.xml" value="0.3769230769230769" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/custom_button.xml" value="0.3828125" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/custom_button_reject.xml" value="0.3769230769230769" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/custom_full_name_icon.xml" value="0.3769230769230769" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/custom_guardian_phone_no_icon.xml" value="0.3769230769230769" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/custom_input.xml" value="0.3769230769230769" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_admin_home.xml" value="0.30416666666666664" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_admin_login.xml" value="0.30416666666666664" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_chat.xml" value="0.26614583333333336" />
-        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_main.xml" value="0.3033175355450237" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_signup.xml" value="0.33" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_signup_options.xml" value="0.29010416666666666" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_signup_teacher.xml" value="0.30416666666666664" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_student_profile.xml" value="0.33" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_student_profile_update.xml" value="0.22" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_student_verify.xml" value="0.3" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_student_verify_profile.xml" value="0.36666666666666664" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_waiting.xml" value="0.33" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/app_bar_layout.xml" value="0.36666666666666664" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/fragment_chat.xml" value="0.3098958333333333" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/fragment_chats.xml" value="0.36666666666666664" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/fragment_contacts.xml" value="0.36666666666666664" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/fragment_groups.xml" value="0.36666666666666664" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/singlerow.xml" value="0.36666666666666664" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/singlerowTeacher.xml" value="0.3098958333333333" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/singlerow_teacher.xml" value="0.3098958333333333" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/users_display_layout.xml" value="0.2989583333333333" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/menu/chat_options.xml" value="0.36666666666666664" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/menu/options_menu.xml" value="0.36666666666666664" />
       </map>

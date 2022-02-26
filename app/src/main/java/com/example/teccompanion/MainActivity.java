@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
@@ -14,28 +15,47 @@ import androidx.cardview.widget.CardView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
+    private CircleImageView profileImage;
+    private TextView userFullName;
+
     private CardView chatCardView, documentCardView;
 
     private FirebaseUser currentUser;
     private FirebaseAuth mAuth;
+    private String currentUserID;
+    private DatabaseReference RootRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mAuth = FirebaseAuth.getInstance();
-        currentUser = mAuth.getCurrentUser();
-
-
-
         mToolbar = (Toolbar) findViewById(R.id.mainActivity_toolbarId);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("TEC Companion");
+
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+        currentUserID = currentUser.getUid();
+        RootRef = FirebaseDatabase.getInstance().getReference();
+
+        profileImage = (CircleImageView) findViewById(R.id.mainActivity_ImageStudentId);
+        userFullName = (TextView)  findViewById(R.id.mainActivity_StudentFullName);
+
+
+        RetrieveUser();
 
         chatCardView = (CardView) findViewById(R.id.chatButtonMainActivityId);
         documentCardView = (CardView) findViewById(R.id.documentButtonMainId);
@@ -53,30 +73,103 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        profileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StudentProfileActivity();
+            }
+        });
+
+        userFullName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StudentProfileActivity();
+            }
+        });
     }
 
+    private void RetrieveUser()
+    {
+        RootRef.child("UsersVerified").child(currentUserID)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot)
+                    {
+                        if(snapshot.exists())
+                        {
+                            String retrieveFullName = snapshot.child("FullName").getValue().toString();
+
+                            String retrieveProfileImage = snapshot.child("ImageUrl").getValue().toString();
+
+                            userFullName.setText(retrieveFullName);
+                            Picasso.get().load(retrieveProfileImage).into(profileImage);
+                        }
+                        else
+                        {
+                            //Toast.makeText(MainActivity.this, "Please Set Your Profile", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+    }
+
+
+    private void StudentProfileActivity()
+    {
+        Intent studentProfileIntent = new Intent(this, StudentProfile.class);
+        startActivity(studentProfileIntent);
+    }
 
 
     public void ChatActivity()
     {
         Intent intent = new Intent(this, Chat.class);
         startActivity(intent);
-        //Toast.makeText(this, "user"+ currentUser, Toast.LENGTH_SHORT).show();
-        //Toast.makeText(this, "Email: "+ currentUser.getEmail().toString(), Toast.LENGTH_SHORT).show();
+
     }
 
-/*
+
     @Override
     protected void onStart()
     {
         super.onStart();
-
-        if(currentUser == null)
-        {
-            SendUserToLoginActivity();
-        }
+        Checking();
     }
-*/
+
+    private void Checking()
+    {
+        RootRef.child("UsersVerified").child(currentUserID)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot)
+                    {
+                        if(snapshot.exists())
+                        {
+                            //Toast.makeText(MainActivity.this, "Welcome Back", Toast.LENGTH_SHORT).show();
+                        }
+
+                        else
+                        {
+                            mAuth.signOut();
+                            Intent WaitingIntent = new Intent(MainActivity.this, Waiting.class);
+                            startActivity(WaitingIntent);
+                            finish();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error)
+                    {
+
+                    }
+                });
+    }
+
 
     private void SendUserToLoginActivity()
     {

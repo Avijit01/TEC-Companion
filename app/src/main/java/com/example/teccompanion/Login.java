@@ -18,6 +18,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Login extends AppCompatActivity {
 
@@ -25,7 +30,8 @@ public class Login extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private ProgressDialog loadingBar;
 
-    private Button loginButton;
+
+    private Button loginButton, adminButton;
     private EditText userEmail, userPassword;
     private TextView needNewAccount, forgetPassword;
 
@@ -42,7 +48,8 @@ public class Login extends AppCompatActivity {
         needNewAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SendUserToRegisterActivity();
+                SendToSignupOptions();
+                //SendUserToRegisterActivity();
             }
         });
 
@@ -53,7 +60,16 @@ public class Login extends AppCompatActivity {
                 AllowLogin();
             }
         });
+
+        adminButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                AdminLoginActivity();
+            }
+        });
     }
+
 
     private void AllowLogin()
     {
@@ -85,7 +101,7 @@ public class Login extends AppCompatActivity {
                             if(task.isSuccessful())
                             {
                                 SendUserToMainActivity();
-                                Toast.makeText(Login.this, "Login Successful...", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(Login.this, "Login Successful...", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
                                 finish();
                             }
@@ -107,6 +123,7 @@ public class Login extends AppCompatActivity {
         userPassword = (EditText) findViewById(R.id.loginPasswordId);
         needNewAccount = (TextView) findViewById(R.id.newAccountId);
         loadingBar = new ProgressDialog(this);
+        adminButton = (Button) findViewById(R.id.adminButtonId);
     }
 
 
@@ -119,8 +136,10 @@ public class Login extends AppCompatActivity {
         if(currentUser != null)
         {
             SendUserToMainActivity();
+
         }
     }
+
 
 
     private void SendUserToMainActivity()
@@ -135,5 +154,17 @@ public class Login extends AppCompatActivity {
     {
         Intent signupIntent = new Intent(Login.this, Signup.class);
         startActivity(signupIntent);
+    }
+
+    private void AdminLoginActivity()
+    {
+        Intent adminLoginIntent = new Intent(Login.this, AdminLogin.class);
+        startActivity(adminLoginIntent);
+    }
+
+    private void SendToSignupOptions()
+    {
+        Intent signupOptionsIntent = new Intent(Login.this, SignupOptions.class);
+        startActivity(signupOptionsIntent);
     }
 }

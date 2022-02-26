@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.teccompanion">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -11,6 +13,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TECCompanion">
+        <activity
+            android:name=".Waiting"
+            android:exported="false"
+            android:parentActivityName=".Login"/>
+        <activity
+            android:name=".StudentVerifyProfile"
+            android:exported="false" />
+        <activity
+            android:name=".StudentVerify"
+            android:exported="false"
+            android:parentActivityName=".AdminHome" />
+        <activity
+            android:name=".SignupTeacher"
+            android:exported="false" />
+        <activity
+            android:name=".SignupOptions"
+            android:exported="false" />
+        <activity
+            android:name=".AdminHome"
+            android:exported="false" />
+        <activity
+            android:name=".AdminLogin"
+            android:exported="false" />
+        <activity
+            android:name=".StudentProfileUpdate"
+            android:exported="false" />
+        <activity
+            android:name=".StudentProfile"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".MainActivity"
             android:exported="false" />
@@ -29,6 +61,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
     </application>
 
 </manifest>
