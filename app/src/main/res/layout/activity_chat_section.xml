@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gray_background"
+    tools:context=".ChatSection">
+
+    <include
+        android:id="@+id/chatSection_toolbarId"
+        layout="@layout/app_bar_layout"
+        ></include>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_ChatSectionId"
+        android:layout_below="@+id/chatSection_toolbarId"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/chatSection_LayoutId"
+        >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <LinearLayout
+        android:id="@+id/chatSection_LayoutId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        >
+
+        <EditText
+            android:id="@+id/input_messageId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Type message"
+            android:layout_marginLeft="5dp"
+            android:fontFamily="@font/nunito"
+            android:padding="15dp"
+            android:layout_weight="9"
+            />
+
+        <ImageButton
+            android:id="@+id/chatSection_SendButtonId"
+            android:layout_width="35dp"
+            android:layout_height="47dp"
+            android:background="@drawable/custom_button"
+            android:src="@drawable/send_icon"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:padding="15dp"
+            />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

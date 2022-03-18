@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gray_background"
     android:orientation="vertical"
     android:padding="25dp"
     tools:context=".AdminLogin">
@@ -19,18 +20,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="ADMIN"
+            android:layout_marginTop="30dp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:textColor="@color/black"
+            android:textColor="#00433D"
             android:textSize="30sp"
-            android:paddingBottom="30dp"
+            android:paddingBottom="10dp"
             android:textStyle="bold"
             />
+
+        <ImageView
+            android:layout_width="140dp"
+            android:layout_height="120dp"
+            android:src="@drawable/tec"
+            android:layout_marginBottom="20dp"></ImageView>
 
         <EditText
             android:id="@+id/AdminLogin_UserNameId"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:fontFamily="@font/nunito"
             android:layout_marginTop="10dp"
             android:background="@drawable/custom_input"
             android:drawableStart="@drawable/custom_full_name_icon"
@@ -46,6 +55,7 @@
             android:id="@+id/AdminLogin_PasswordId"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:fontFamily="@font/nunito"
             android:layout_marginTop="10dp"
             android:background="@drawable/custom_input"
             android:drawableStart="@drawable/custom_password_icon"
@@ -60,6 +70,7 @@
             android:id="@+id/AdminLogin_LoginButtonId"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:fontFamily="@font/nunito"
             android:layout_marginTop="20dp"
             android:background="@drawable/custom_button"
             android:text="LOGIN"
@@ -71,6 +82,7 @@
             android:id="@+id/AdminLogin_AddUserButtonId"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:fontFamily="@font/nunito"
             android:layout_marginTop="20dp"
             android:background="@drawable/custom_button"
             android:text="ADD USER"

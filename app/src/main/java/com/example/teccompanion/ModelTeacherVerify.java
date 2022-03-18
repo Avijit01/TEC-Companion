@@ -2,16 +2,17 @@ package com.example.teccompanion;
 
 public class ModelTeacherVerify
 {
-    String FullName, Type, ImageUrl;
+    String FullName, Dept, ImageUrl;
 
     ModelTeacherVerify()
     {
 
     }
 
-    public ModelTeacherVerify(String fullName, String type, String imageUrl) {
+
+    public ModelTeacherVerify(String fullName, String dept, String imageUrl) {
         FullName = fullName;
-        Type = type;
+        Dept = dept;
         ImageUrl = imageUrl;
     }
 
@@ -23,12 +24,12 @@ public class ModelTeacherVerify
         FullName = fullName;
     }
 
-    public String getType() {
-        return Type;
+    public String getDept() {
+        return Dept;
     }
 
-    public void setType(String type) {
-        Type = type;
+    public void setDept(String dept) {
+        Dept = dept;
     }
 
     public String getImageUrl() {

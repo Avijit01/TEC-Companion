@@ -30,7 +30,7 @@
                 android:id="@+id/studentProfileLayoutId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#006257"
+                android:background="@drawable/custom_layout_style"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="10dp">
@@ -42,8 +42,8 @@
                     android:layout_gravity="center"
                     android:padding="2dp"
                     android:src="@drawable/avatar"
-                    app:civ_border_color="#FFFFFF"
-                    app:civ_border_width="3dp" />
+                    app:civ_border_color="#B3B3B3"
+                    app:civ_border_width="2dp" />
 
             </LinearLayout>
 
@@ -62,22 +62,22 @@
                     <TextView
                         android:id="@+id/studentProfile_FullNameHintId"
                         android:layout_width="60dp"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:layout_weight="2"
                         android:drawableStart="@drawable/custom_full_name_icon"
-                        android:text=" Name: "
                         android:gravity="center|left"
                         android:paddingStart="12dp"
                         android:paddingEnd="12dp"
+                        android:text=" Name: "
                         android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/studentProfile_FullNameId"
                         android:layout_width="100dp"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:layout_weight="2"
-                        android:text="Full Name"
                         android:gravity="center|left"
+                        android:text="Full Name"
                         android:textColor="@color/black"
                         android:textSize="15sp" />
 
@@ -92,22 +92,22 @@
                     <TextView
                         android:id="@+id/studentProfile_IDHintId"
                         android:layout_width="60dp"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:layout_weight="2"
                         android:drawableStart="@drawable/custom_id_icon"
-                        android:text=" ID: "
                         android:gravity="center|left"
                         android:paddingStart="12dp"
                         android:paddingEnd="12dp"
+                        android:text=" ID: "
                         android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/studentProfile_IDId"
                         android:layout_width="100dp"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:layout_weight="2"
-                        android:text="ID"
                         android:gravity="center|left"
+                        android:text="ID"
                         android:textColor="@color/black"
                         android:textSize="15sp" />
 
@@ -121,22 +121,51 @@
 
                     <TextView
                         android:layout_width="60dp"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:layout_weight="2"
-                        android:drawableStart="@drawable/custom_batch_icon"
-                        android:text=" Batch: "
+                        android:drawableStart="@drawable/dept"
                         android:gravity="center|left"
                         android:paddingStart="12dp"
                         android:paddingEnd="12dp"
+                        android:text=" Dept.: "
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/studentProfile_DeptId"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:gravity="center|left"
+                        android:text="Dept"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:drawableStart="@drawable/custom_batch_icon"
+                        android:gravity="center|left"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:text=" Batch: "
                         android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/studentProfile_BatchId"
                         android:layout_width="100dp"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:layout_weight="2"
-                        android:text="Batch"
                         android:gravity="center|left"
+                        android:text="Batch"
                         android:textColor="@color/black"
                         android:textSize="15sp" />
 
@@ -151,22 +180,22 @@
                     <TextView
                         android:id="@+id/studentProfile_SessionHintId"
                         android:layout_width="60dp"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:layout_weight="2"
                         android:drawableStart="@drawable/custom_session_icon"
-                        android:text=" Session: "
                         android:gravity="center|left"
                         android:paddingStart="12dp"
                         android:paddingEnd="12dp"
+                        android:text=" Session: "
                         android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/studentProfile_SessionId"
                         android:layout_width="100dp"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:layout_weight="2"
-                        android:text="Session"
                         android:gravity="center|left"
+                        android:text="Session"
                         android:textColor="@color/black"
                         android:textSize="15sp" />
 
@@ -180,22 +209,22 @@
 
                     <TextView
                         android:layout_width="60dp"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:layout_weight="2"
                         android:drawableStart="@drawable/custom_phone_no_icon"
-                        android:text=" Phone No.: "
                         android:gravity="center|left"
                         android:paddingStart="12dp"
                         android:paddingEnd="12dp"
+                        android:text=" Phone No.: "
                         android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/studentProfile_PhoneNoId"
                         android:layout_width="100dp"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:layout_weight="2"
-                        android:text="Phone No."
                         android:gravity="center|left"
+                        android:text="Phone No."
                         android:textColor="@color/black"
                         android:textSize="15sp" />
 
@@ -213,10 +242,10 @@
                         android:layout_height="50dp"
                         android:layout_weight="2"
                         android:drawableStart="@drawable/custom_guardian_phone_no_icon"
-                        android:text=" Guardian\n Phone No.: "
                         android:gravity="center|left"
                         android:paddingStart="12dp"
                         android:paddingEnd="12dp"
+                        android:text=" Guardian\n Phone No.: "
                         android:textSize="15sp" />
 
                     <TextView
@@ -224,13 +253,12 @@
                         android:layout_width="100dp"
                         android:layout_height="50dp"
                         android:layout_weight="2"
-                        android:text="G.Phone No."
                         android:gravity="center|left"
+                        android:text="G.Phone No."
                         android:textColor="@color/black"
                         android:textSize="15sp" />
 
                 </LinearLayout>
-
 
 
                 <LinearLayout
@@ -241,22 +269,22 @@
 
                     <TextView
                         android:layout_width="60dp"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:layout_weight="2"
                         android:drawableStart="@drawable/custom_address_icon"
-                        android:text=" Address:"
                         android:gravity="center|left"
                         android:paddingStart="12dp"
                         android:paddingEnd="12dp"
+                        android:text=" Address:"
                         android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/studentProfile_AddressId"
                         android:layout_width="100dp"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:layout_weight="2"
-                        android:text="Address"
                         android:gravity="center|left"
+                        android:text="Address"
                         android:textColor="@color/black"
                         android:textSize="15sp" />
 
@@ -270,22 +298,22 @@
 
                     <TextView
                         android:layout_width="60dp"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:layout_weight="2"
                         android:drawableStart="@drawable/custom_email_icon"
-                        android:text=" Email: "
                         android:gravity="center|left"
                         android:paddingStart="12dp"
                         android:paddingEnd="12dp"
+                        android:text=" Email: "
                         android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/studentProfile_EmailId"
                         android:layout_width="100dp"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:layout_weight="2"
-                        android:text="Email"
                         android:gravity="center|left"
+                        android:text="Email"
                         android:textColor="@color/black"
                         android:textSize="15sp" />
 
@@ -295,13 +323,13 @@
                     android:id="@+id/studentProfile_ButtonId"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
+                    android:fontFamily="@font/nunito"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/custom_button"
-                    android:text="EDIT PROFILE"
+                    android:text="Edit Profile"
                     android:textAllCaps="false"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp" />
-
 
 
             </LinearLayout>

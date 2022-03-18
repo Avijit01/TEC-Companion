@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gray_background"
     android:orientation="vertical"
     tools:context=".SignupTeacher">
 
@@ -19,7 +20,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white"
             android:orientation="vertical"
             android:padding="25dp">
 
@@ -45,6 +45,7 @@
                 android:id="@+id/SignupTeacher_FullNameId"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:fontFamily="@font/nunito"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/custom_input"
                 android:drawableStart="@drawable/custom_full_name_icon"
@@ -56,11 +57,28 @@
                 android:paddingEnd="12dp"
                 android:textSize="15sp" />
 
+            <EditText
+                android:id="@+id/SignupTeacher_DeptId"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:fontFamily="@font/nunito"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_input"
+                android:drawableStart="@drawable/custom_batch_icon"
+                android:drawablePadding="12dp"
+                android:ems="10"
+                android:hint="Dept: CSE/EEE/Civil/Textile/ICE"
+                android:inputType="text"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textSize="15sp" />
+
 
             <EditText
                 android:id="@+id/SignupTeacher_PhoneId"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:fontFamily="@font/nunito"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/custom_input"
                 android:drawableStart="@drawable/custom_phone_no_icon"
@@ -77,6 +95,7 @@
                 android:id="@+id/SignupTeacher_CurrentAddressId"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:fontFamily="@font/nunito"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/custom_input"
                 android:drawableStart="@drawable/custom_address_icon"
@@ -92,6 +111,7 @@
                 android:id="@+id/SignupTeacher_EmailId"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:fontFamily="@font/nunito"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/custom_input"
                 android:drawableStart="@drawable/custom_email_icon"
@@ -107,6 +127,7 @@
                 android:id="@+id/SignupTeacher_PasswordId"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:fontFamily="@font/nunito"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/custom_input"
                 android:drawableStart="@drawable/custom_password_icon"
@@ -121,6 +142,7 @@
                 android:id="@+id/SignupTeacher_CreateAccountButtonId"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:fontFamily="@font/nunito"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/custom_button"
                 android:text="Create Account"

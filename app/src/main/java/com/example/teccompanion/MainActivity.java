@@ -2,6 +2,7 @@ package com.example.teccompanion;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -22,6 +23,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.HashMap;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,12 +35,16 @@ public class MainActivity extends AppCompatActivity {
     private CircleImageView profileImage;
     private TextView userFullName;
 
-    private CardView chatCardView, documentCardView;
+    private CardView studentListCardView, teacherListCardView, chatCardView, documentCardView;
 
     private FirebaseUser currentUser;
     private FirebaseAuth mAuth;
     private String currentUserID;
     private DatabaseReference RootRef;
+
+    private String typeForButton;
+    private ProgressDialog loadingBar;
+    String state;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
         mToolbar = (Toolbar) findViewById(R.id.mainActivity_toolbarId);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("TEC Companion");
+
+        loadingBar = new ProgressDialog(this);
 
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
@@ -57,8 +68,26 @@ public class MainActivity extends AppCompatActivity {
 
         RetrieveUser();
 
+        studentListCardView = (CardView) findViewById(R.id.studentListButtonMainActivityId);
+        teacherListCardView = (CardView) findViewById(R.id.teacherListButtonMainActivityId);
         chatCardView = (CardView) findViewById(R.id.chatButtonMainActivityId);
         documentCardView = (CardView) findViewById(R.id.documentButtonMainId);
+
+
+
+        studentListCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StudentListActivity();
+            }
+        });
+
+        teacherListCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TeacherListActivity();
+            }
+        });
 
         chatCardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,18 +105,90 @@ public class MainActivity extends AppCompatActivity {
 
         profileImage.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                StudentProfileActivity();
+            public void onClick(View v)
+            {
+                if(typeForButton.equals("Student"))
+                    StudentProfileActivity();
+
+                if(typeForButton.equals("Teacher"))
+                    TeacherProfileActivity();
             }
         });
 
         userFullName.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                StudentProfileActivity();
+            public void onClick(View v)
+            {
+                if(typeForButton.equals("Student"))
+                    StudentProfileActivity();
+
+                if(typeForButton.equals("Teacher"))
+                    TeacherProfileActivity();
             }
         });
     }
+
+    @Override
+    protected void onStart()
+    {
+        loadingBar.setTitle("Loading");
+        loadingBar.setMessage("Please wait...");
+        loadingBar.setCanceledOnTouchOutside(true);
+        loadingBar.show();
+
+        super.onStart();
+        state = "online";
+        Checking();
+
+    }
+
+/*
+    @Override
+    protected void onStop()
+    {
+        super.onStop();
+
+        currentUser = mAuth.getCurrentUser();
+        currentUserID = currentUser.getUid();
+
+        if(currentUser != null)
+        {
+            state = "offline";
+            UpdateUserStatus();
+        }
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+
+        currentUser = mAuth.getCurrentUser();
+        currentUserID = currentUser.getUid();
+
+        if(currentUser != null)
+        {
+            state = "offline";
+            UpdateUserStatus();
+        }
+    }
+
+*/
+
+
+    private void TeacherListActivity()
+    {
+        Intent teacherListIntent = new Intent(this, TeacherList.class);
+        startActivity(teacherListIntent);
+    }
+
+
+    private void StudentListActivity()
+    {
+        Intent studentListIntent = new Intent(this, StudentList.class);
+        startActivity(studentListIntent);
+    }
+
 
     private void RetrieveUser()
     {
@@ -99,11 +200,12 @@ public class MainActivity extends AppCompatActivity {
                         if(snapshot.exists())
                         {
                             String retrieveFullName = snapshot.child("FullName").getValue().toString();
-
                             String retrieveProfileImage = snapshot.child("ImageUrl").getValue().toString();
+                            typeForButton = snapshot.child("Type").getValue().toString();
 
                             userFullName.setText(retrieveFullName);
                             Picasso.get().load(retrieveProfileImage).into(profileImage);
+                            loadingBar.dismiss();
                         }
                         else
                         {
@@ -125,8 +227,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(studentProfileIntent);
     }
 
+    private void TeacherProfileActivity()
+    {
+        Intent teacherProfileIntent = new Intent(this, TeacherProfile.class);
+        startActivity(teacherProfileIntent);
+    }
 
-    public void ChatActivity()
+
+    private void ChatActivity()
     {
         Intent intent = new Intent(this, Chat.class);
         startActivity(intent);
@@ -134,12 +242,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    protected void onStart()
-    {
-        super.onStart();
-        Checking();
-    }
+
+
 
     private void Checking()
     {
@@ -150,7 +254,8 @@ public class MainActivity extends AppCompatActivity {
                     {
                         if(snapshot.exists())
                         {
-                            //Toast.makeText(MainActivity.this, "Welcome Back", Toast.LENGTH_SHORT).show();
+                            UpdateUserStatus();
+                            loadingBar.dismiss();
                         }
 
                         else
@@ -159,6 +264,7 @@ public class MainActivity extends AppCompatActivity {
                             Intent WaitingIntent = new Intent(MainActivity.this, Waiting.class);
                             startActivity(WaitingIntent);
                             finish();
+
                         }
                     }
 
@@ -169,7 +275,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
-
 
     private void SendUserToLoginActivity()
     {
@@ -198,10 +303,34 @@ public class MainActivity extends AppCompatActivity {
             mAuth.signOut();
             SendUserToLoginActivity();
             finish();
+            state = "offline";
+            UpdateUserStatus();
         }
 
 
         return true;
+    }
+
+    private void UpdateUserStatus()
+    {
+        String saveCurrentTime, saveCurrentDate;
+
+        Calendar calendar = Calendar.getInstance();
+
+        SimpleDateFormat currentDate = new SimpleDateFormat("dd MMM, yyyy");
+        saveCurrentDate = currentDate.format(calendar.getTime());
+
+        SimpleDateFormat currentTime = new SimpleDateFormat("hh:mm a");
+        saveCurrentTime = currentTime.format(calendar.getTime());
+
+        HashMap<String, Object> onlineStateMap = new HashMap<>();
+        onlineStateMap.put("time", saveCurrentTime);
+        onlineStateMap.put("date", saveCurrentDate);
+        onlineStateMap.put("state", state);
+
+
+        RootRef.child("UsersVerified").child(currentUserID).child("userState")
+                .updateChildren(onlineStateMap);
     }
 
 }

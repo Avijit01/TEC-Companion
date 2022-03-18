@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gray_background"
+    android:orientation="vertical"
+    tools:context=".TeacherProfileUpdate">
+
+    <include
+        android:id="@+id/teacherProfileUpdate_toolbarId"
+        layout="@layout/app_bar_layout"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/teacherProfileUpdate_toolbarId">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="25dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/teacherProfileUpdate_circularImageTeacherId"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:padding="2dp"
+                    android:src="@drawable/avatar"
+                    app:civ_border_color="#B3B3B3"
+                    app:civ_border_width="2dp" />
+
+            </LinearLayout>
+
+
+            <EditText
+                android:id="@+id/teacherProfileUpdate_FullNameId"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:fontFamily="@font/nunito"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_input"
+                android:drawableStart="@drawable/custom_full_name_icon"
+                android:drawablePadding="12dp"
+                android:ems="10"
+                android:hint="Full Name"
+                android:inputType="text"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/teacherProfileUpdate_DeptId"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:fontFamily="@font/nunito"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_input"
+                android:drawableStart="@drawable/custom_batch_icon"
+                android:drawablePadding="12dp"
+                android:ems="10"
+                android:hint="Dept: CSE/EEE/Civil/Textile/ICE"
+                android:inputType="text"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textSize="15sp" />
+
+
+            <EditText
+                android:id="@+id/teacherProfileUpdate_PhoneId"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:fontFamily="@font/nunito"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_input"
+                android:drawableStart="@drawable/custom_phone_no_icon"
+                android:drawablePadding="12dp"
+                android:ems="10"
+                android:hint="Phone No."
+                android:inputType="number"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textSize="15sp" />
+
+
+            <EditText
+                android:id="@+id/teacherProfileUpdate_AddressId"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:fontFamily="@font/nunito"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_input"
+                android:drawableStart="@drawable/custom_address_icon"
+                android:drawablePadding="12dp"
+                android:ems="10"
+                android:hint="Current Address"
+                android:inputType="text"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/teacherProfileUpdate_EmailId"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:fontFamily="@font/nunito"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_input"
+                android:drawableStart="@drawable/custom_email_icon"
+                android:drawablePadding="12dp"
+                android:ems="10"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/teacherProfileUpdate_PasswordId"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:fontFamily="@font/nunito"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_input"
+                android:drawableStart="@drawable/custom_password_icon"
+                android:drawablePadding="12dp"
+                android:ems="10"
+                android:hint="Password"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/teacherProfileUpdate_ButtonId"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:fontFamily="@font/nunito"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/custom_button"
+                android:text="Update Profile"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</RelativeLayout>

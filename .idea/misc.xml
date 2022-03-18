@@ -5,36 +5,83 @@
       <map>
         <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable-v24/custom_full_name_icon.xml" value="0.3769230769230769" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/address.xml" value="0.3828125" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/batch.xml" value="0.3648148148148148" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/batch_focus.xml" value="0.3648148148148148" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/chat.xml" value="0.3648148148148148" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/custom_address_icon.xml" value="0.3769230769230769" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/custom_batch_icon.xml" value="0.3648148148148148" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/custom_button.xml" value="0.3828125" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/custom_button_reject.xml" value="0.3769230769230769" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/custom_email_icon.xml" value="0.3648148148148148" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/custom_full_name_icon.xml" value="0.3769230769230769" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/custom_guardian_phone_no_icon.xml" value="0.3769230769230769" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/custom_id_icon.xml" value="0.3648148148148148" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/custom_input.xml" value="0.3769230769230769" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/custom_layout_style.xml" value="0.33" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/custom_password_icon.xml" value="0.3648148148148148" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/custom_phone_no_icon.xml" value="0.3648148148148148" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/custom_session_icon.xml" value="0.3648148148148148" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/dept.xml" value="0.3648148148148148" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/email.xml" value="0.3648148148148148" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/email_focus.xml" value="0.3648148148148148" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/full_name.xml" value="0.3648148148148148" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/full_name_focus.xml" value="0.3648148148148148" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/receiver_messages_layout.xml" value="0.3828125" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/send.xml" value="0.3769230769230769" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/send_icon.xml" value="0.3769230769230769" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/sender_messages_layout.xml" value="0.3828125" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/single_row_background.xml" value="0.3648148148148148" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/drawable/teacherlist1.xml" value="0.3828125" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_admin_home.xml" value="0.30416666666666664" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_admin_login.xml" value="0.30416666666666664" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_all_student_list.xml" value="0.36666666666666664" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_all_students.xml" value="0.36666666666666664" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_batch_list.xml" value="0.36666666666666664" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_batch_list_profile.xml" value="0.36666666666666664" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_chat.xml" value="0.26614583333333336" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_chat_section.xml" value="0.35260416666666666" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_find_students.xml" value="0.36666666666666664" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_find_students_profile.xml" value="0.36666666666666664" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_find_teachers.xml" value="0.36666666666666664" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_find_teachers_profile.xml" value="0.35260416666666666" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_image_full_screen.xml" value="0.36666666666666664" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_main.xml" value="0.3033175355450237" />
-        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_signup.xml" value="0.33" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_signup.xml" value="0.2821643286573146" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_signup_options.xml" value="0.29010416666666666" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_signup_teacher.xml" value="0.30416666666666664" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_splash_screen.xml" value="0.36666666666666664" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_student_list.xml" value="0.36666666666666664" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_student_profile.xml" value="0.33" />
-        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_student_profile_update.xml" value="0.22" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_student_profile_update.xml" value="0.33" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_student_verify.xml" value="0.3" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_student_verify_profile.xml" value="0.36666666666666664" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_teacher_list.xml" value="0.36666666666666664" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_teacher_list_profile.xml" value="0.36666666666666664" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_teacher_profile.xml" value="0.33" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_teacher_profile_update.xml" value="0.36666666666666664" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_teacher_verify.xml" value="0.36666666666666664" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_teacher_verify_profile.xml" value="0.36666666666666664" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/activity_waiting.xml" value="0.33" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/app_bar_layout.xml" value="0.36666666666666664" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/custom_chat_bar.xml" value="0.36666666666666664" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/custom_messages_layout.xml" value="0.36666666666666664" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/fragment_chat.xml" value="0.3098958333333333" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/fragment_chats.xml" value="0.36666666666666664" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/fragment_contacts.xml" value="0.36666666666666664" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/fragment_groups.xml" value="0.36666666666666664" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/fragment_requests.xml" value="0.36666666666666664" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/singlerow.xml" value="0.36666666666666664" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/singlerowTeacher.xml" value="0.3098958333333333" />
-        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/singlerow_teacher.xml" value="0.3098958333333333" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/singlerow_contacts.xml" value="0.36666666666666664" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/singlerow_find_students.xml" value="0.36666666666666664" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/singlerow_teacher.xml" value="0.33" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/layout/users_display_layout.xml" value="0.2989583333333333" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/menu/chat_options.xml" value="0.36666666666666664" />
         <entry key="..\:/Study/1Android Projects/app/src/main/res/menu/options_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/mipmap-anydpi-v26/app_icon.xml" value="0.31666666666666665" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/mipmap-anydpi-v26/app_icon_round.xml" value="0.271875" />
+        <entry key="..\:/Study/1Android Projects/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.31666666666666665" />
       </map>
     </option>
   </component>

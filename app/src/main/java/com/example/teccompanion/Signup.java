@@ -53,6 +53,7 @@ public class Signup extends AppCompatActivity
     private StorageReference filePath;
     private DatabaseReference dataStore;
     private int flag = 0;
+    private String dept;
 
 
     @Override
@@ -62,6 +63,8 @@ public class Signup extends AppCompatActivity
 
         mToolbar = (Toolbar) findViewById(R.id.signup_toolbarId);
         setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle("Registration");
 
         mAuth = FirebaseAuth.getInstance();
@@ -159,6 +162,11 @@ public class Signup extends AppCompatActivity
             Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show();
         }
 
+        if(password.length() < 6 || password.length() >12)
+        {
+            Toast.makeText(this, "Password length should be 6 to 12", Toast.LENGTH_SHORT).show();
+        }
+
         if(flag == 0)
         {
             Toast.makeText(this, "Please choose your profile Image", Toast.LENGTH_SHORT).show();
@@ -179,6 +187,7 @@ public class Signup extends AppCompatActivity
                             if(task.isSuccessful())
                             {
 
+                                dept = "CSE";
                                 currentUserID = mAuth.getCurrentUser().getUid();
                                 rootRef.child("Users").child(currentUserID).setValue("");
                                 dataStore = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID);
@@ -208,7 +217,9 @@ public class Signup extends AppCompatActivity
                                                     profileMap.put("Password", password);
                                                     profileMap.put("Type", userType);
                                                     profileMap.put("Level", level);
+                                                    profileMap.put("Dept", dept);
                                                     profileMap.put("ImageUrl", String.valueOf(uri));
+
 
                                                     dataStore.setValue(profileMap)
                                                             .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -346,30 +357,6 @@ public class Signup extends AppCompatActivity
             userImageUri = result.getUri();
             userImage.setImageURI(userImageUri);
 
-            /*
-            if(resultCode == RESULT_OK)
-            {
-                Uri resultUri = result.getUri();
-                String currentUserID = mAuth.getCurrentUser().getUid();
-                StorageReference filePath = userProfileImageRef.child(currentUserID + ".jpg");
-
-                filePath.putFile(resultUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task)
-                    {
-                        if(task.isSuccessful())
-                        {
-                            Toast.makeText(Signup.this, "Image Uploaded Successfully", Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                        {
-                            String message = task.getException().toString();
-                            Toast.makeText(Signup.this, "Error"+message, Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-            }
-            */
         }
 
     }

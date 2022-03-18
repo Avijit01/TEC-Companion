@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+app:cardCornerRadius="10dp"
+android:elevation="5dp"
+app:cardUseCompatPadding="true">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/single_row_background"
+    android:gravity="center"
+    android:padding="10dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/singleRowContacts_ImageId"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/avatar"
+        android:layout_centerVertical="true"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#B3B3B3"
+        />
+
+    <TextView
+        android:id="@+id/singleRowContacts_FullNameId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@id/singleRowContacts_ImageId"
+        android:fontFamily="@font/nunito"
+        android:gravity="center|left"
+        android:text="Full Name"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/singleRowContacts_OnlineId"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="5dp"
+        android:visibility="invisible"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="5dp"
+        android:background="@color/app_icon_new_background"
+        />
+
+
+    <TextView
+        android:id="@+id/singleRowContacts_TypeId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/singleRowContacts_FullNameId"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@id/singleRowContacts_ImageId"
+        android:fontFamily="@font/nunito"
+        android:gravity="center|left"
+        android:text="Type"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/singleRowContacts_TypeId"
+        android:layout_toRightOf="@id/singleRowContacts_ImageId"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        >
+
+        <Button
+            android:id="@+id/singleRowContacts_AcceptButtonId"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:fontFamily="@font/nunito"
+            android:text="Accept"
+            android:layout_marginRight="10dp"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:background="@drawable/custom_button"
+            android:textColor="#FFFFFF"
+            android:visibility="invisible"
+            />
+
+        <Button
+            android:id="@+id/singleRowContacts_RejectButtonId"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:fontFamily="@font/nunito"
+            android:text="Reject"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:background="@drawable/custom_button_reject"
+            android:textColor="#FFFFFF"
+            android:visibility="invisible"
+            />
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>
+
+</androidx.cardview.widget.CardView>

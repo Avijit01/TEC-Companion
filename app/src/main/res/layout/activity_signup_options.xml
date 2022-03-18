@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gray_background"
     android:orientation="vertical"
     tools:context=".SignupOptions">
 
@@ -23,9 +24,10 @@
             android:id="@+id/SignupOptions_StudentBtnId"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:fontFamily="@font/nunito"
             android:layout_marginTop="30dp"
             android:background="@drawable/custom_button"
-            android:text="SIGNUP AS STUDENT"
+            android:text="Signup As Student"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />
@@ -34,9 +36,10 @@
             android:id="@+id/SignupOptions_TeacherBtnId"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:fontFamily="@font/nunito"
             android:layout_marginTop="20dp"
             android:background="@drawable/custom_button"
-            android:text="SIGNUP AS TEACHER"
+            android:text="Signup As Teacher"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />

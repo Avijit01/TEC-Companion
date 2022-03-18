@@ -24,6 +24,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.HashMap;
+
 public class Login extends AppCompatActivity {
 
     private FirebaseUser currentUser;
@@ -101,7 +105,6 @@ public class Login extends AppCompatActivity {
                             if(task.isSuccessful())
                             {
                                 SendUserToMainActivity();
-                                //Toast.makeText(Login.this, "Login Successful...", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
                                 finish();
                             }
@@ -109,7 +112,7 @@ public class Login extends AppCompatActivity {
                             else
                             {
                                 String message = task.getException().toString();
-                                Toast.makeText(Login.this, "Error: " + message, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Login.this, "Email or Password is wrong", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
                             }
                         }
@@ -136,9 +139,10 @@ public class Login extends AppCompatActivity {
         if(currentUser != null)
         {
             SendUserToMainActivity();
-
         }
+
     }
+
 
 
 

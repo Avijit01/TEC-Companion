@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    tools:context=".BatchListProfile">
+
+    <include
+        android:id="@+id/batchListProfile_toolbarId"
+        layout="@layout/app_bar_layout" />
+
+    <ScrollView
+        android:id="@+id/batchListProfile_ScrollId"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/batchListProfile_toolbarId">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/batchListProfileLayoutId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_layout_style"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/batchListProfile_ImageStudentId"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:layout_gravity="center"
+                    android:padding="2dp"
+                    android:src="@drawable/avatar"
+                    app:civ_border_color="#B3B3B3"
+                    app:civ_border_width="2dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:drawableStart="@drawable/custom_full_name_icon"
+                        android:text=" Name: "
+                        android:gravity="center|left"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/batchListProfile_FullNameId"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:text="Full Name"
+                        android:gravity="center|left"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:drawableStart="@drawable/custom_id_icon"
+                        android:text=" ID: "
+                        android:gravity="center|left"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/batchListProfile_IDId"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:text="ID"
+                        android:gravity="center|left"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:drawableStart="@drawable/dept"
+                        android:text=" Dept.: "
+                        android:gravity="center|left"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/batchListProfile_DeptId"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:text="Dept"
+                        android:gravity="center|left"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:drawableStart="@drawable/custom_batch_icon"
+                        android:text=" Batch: "
+                        android:gravity="center|left"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/batchListProfile_BatchId"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:text="Batch"
+                        android:gravity="center|left"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:drawableStart="@drawable/custom_session_icon"
+                        android:text=" Session: "
+                        android:gravity="center|left"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/batchListProfile_SessionId"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:text="Session"
+                        android:gravity="center|left"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:drawableStart="@drawable/custom_phone_no_icon"
+                        android:text=" Phone No.: "
+                        android:gravity="center|left"
+                        android:paddingStart="12dp"
+                        android:textSize="15sp" />
+
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        >
+
+                        <TextView
+                            android:id="@+id/batchListProfile_PhoneNoId"
+                            android:layout_width="130dp"
+                            android:layout_height="40dp"
+                            android:text="Phone No."
+                            android:gravity="center|left"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" >
+
+                        </TextView>
+
+                        <Button
+                            android:id="@+id/batchList_CallButtonId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="45dp"
+                            android:fontFamily="@font/nunito"
+                            android:background="@drawable/custom_button"
+                            android:text="Call Now"
+                            android:textAllCaps="false"
+                            android:textColor="#FFFFFF"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="5dp"
+                    android:weightSum="4">
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:drawableStart="@drawable/custom_guardian_phone_no_icon"
+                        android:text=" Guardian\n Phone No.: "
+                        android:gravity="center|left"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:textSize="15sp" />
+
+
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        >
+
+                        <TextView
+                            android:id="@+id/batchListProfile_GuardPhoneNoId"
+                            android:layout_width="130dp"
+                            android:layout_height="40dp"
+                            android:text="G.Phone No."
+                            android:gravity="center|left"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" >
+
+                        </TextView>
+
+                        <Button
+                            android:id="@+id/batchList_GuardPhoneNoId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="45dp"
+                            android:fontFamily="@font/nunito"
+                            android:background="@drawable/custom_button"
+                            android:text="Call Now"
+                            android:textAllCaps="false"
+                            android:textColor="#FFFFFF"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:drawableStart="@drawable/custom_address_icon"
+                        android:text=" Address:"
+                        android:gravity="center|left"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/batchListProfile_AddressId"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:text="Address"
+                        android:gravity="center|left"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:drawableStart="@drawable/custom_email_icon"
+                        android:text=" Email: "
+                        android:gravity="center|left"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/batchListProfile_EmailId"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:text="Email"
+                        android:gravity="center|left"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -55,7 +55,7 @@ public class StudentVerify extends AppCompatActivity
 
         FirebaseRecyclerOptions<ModelStudentVerify> options =
                         new FirebaseRecyclerOptions.Builder<ModelStudentVerify>()
-                                .setQuery(FirebaseDatabase.getInstance().getReference().child("Users"), ModelStudentVerify.class)
+                                .setQuery(FirebaseDatabase.getInstance().getReference().child("Users").orderByChild("Type").equalTo("Student"), ModelStudentVerify.class)
                                 .build();
 
 

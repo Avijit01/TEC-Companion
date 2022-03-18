@@ -4,12 +4,13 @@ android:layout_width="match_parent"
 android:layout_height="wrap_content"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 app:cardCornerRadius="5dp"
-android:elevation="5dp"
+android:elevation="10dp"
 app:cardUseCompatPadding="true">
 
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/single_row_background"
     android:padding="15dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -19,30 +20,32 @@ app:cardUseCompatPadding="true">
         android:src="@drawable/avatar"
         android:layout_centerVertical="true"
         app:civ_border_width="2dp"
-        app:civ_border_color="#FF000000"
+        app:civ_border_color="#B3B3B3"
         />
 
     <TextView
         android:id="@+id/singleRowTeacher_FullNameId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Full Name"
-        android:textStyle="bold"
-        android:textSize="25sp"
-        android:textColor="#000"
+        android:layout_marginLeft="15dp"
         android:layout_toRightOf="@id/singleRowTeacher_ImageId"
-        android:layout_marginLeft="10dp"/>
+        android:fontFamily="@font/nunito"
+        android:text="Full Name"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/singleRowTeacher_Type"
+        android:id="@+id/singleRowTeacher_DeptId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Type"
-        android:textSize="25sp"
-        android:textColor="#000"
-        android:layout_toRightOf="@id/singleRowTeacher_ImageId"
+        android:fontFamily="@font/nunito"
         android:layout_below="@id/singleRowTeacher_FullNameId"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@id/singleRowTeacher_ImageId"
+        android:text="Dept"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
 
 
 

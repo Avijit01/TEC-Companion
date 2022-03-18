@@ -27,8 +27,8 @@ public class AdminHome extends AppCompatActivity {
 
         studentVerifyCardView = (CardView) findViewById(R.id.AdminHome_StudentVerifyId);
         teacherVerifyCardView = (CardView) findViewById(R.id.AdminHome_TeacherVerifyId);
-        adminChatCardView = (CardView) findViewById(R.id.AdminHome_ChatId);
-        adminDocumentCardView = (CardView) findViewById(R.id.AdminHome_DocumentId);
+        //adminChatCardView = (CardView) findViewById(R.id.AdminHome_ChatId);
+        //adminDocumentCardView = (CardView) findViewById(R.id.AdminHome_DocumentId);
 
 
         studentVerifyCardView.setOnClickListener(new View.OnClickListener() {
@@ -39,6 +39,14 @@ public class AdminHome extends AppCompatActivity {
             }
         });
 
+        teacherVerifyCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                SendToTeacherVerify();
+            }
+        });
+
 
     }
 
@@ -46,6 +54,12 @@ public class AdminHome extends AppCompatActivity {
     {
         Intent studentVerifyIntent = new Intent(this, StudentVerify.class);
         startActivity(studentVerifyIntent);
+    }
+
+    private void SendToTeacherVerify()
+    {
+        Intent teacherVerifyIntent = new Intent(this, TeacherVerify.class);
+        startActivity(teacherVerifyIntent);
     }
 
 

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gray_background"
+    android:orientation="vertical"
+    tools:context=".StudentList">
+
+    <include
+        android:id="@+id/studentList_toolbarId"
+        layout="@layout/app_bar_layout"
+        ></include>
+
+    <ScrollView
+        android:id="@+id/studentProfile_ScrollId"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/studentList_toolbarId">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="25dp">
+
+            <Button
+                android:id="@+id/studentList_AllButtonId"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:fontFamily="@font/nunito"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/custom_button"
+                android:text="All Students"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/studentList_Batch1ButtonId"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:fontFamily="@font/nunito"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/custom_button"
+                android:text="Batch - 1"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/studentList_Batch2ButtonId"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:fontFamily="@font/nunito"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/custom_button"
+                android:text="Batch - 2"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/studentList_Batch3ButtonId"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:fontFamily="@font/nunito"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/custom_button"
+                android:text="Batch - 3"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/studentList_Batch4ButtonId"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:fontFamily="@font/nunito"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/custom_button"
+                android:text="Batch - 4"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/studentList_Batch5ButtonId"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:fontFamily="@font/nunito"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/custom_button"
+                android:text="Batch - 5"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/studentList_Batch6ButtonId"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:fontFamily="@font/nunito"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/custom_button"
+                android:text="Batch - 6"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/studentList_Batch7ButtonId"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:fontFamily="@font/nunito"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/custom_button"
+                android:text="Batch - 7"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/studentList_Batch8ButtonId"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:fontFamily="@font/nunito"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/custom_button"
+                android:text="Batch - 8"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/studentList_Batch9ButtonId"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:fontFamily="@font/nunito"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/custom_button"
+                android:text="Batch - 9"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/studentList_Batch10ButtonId"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:fontFamily="@font/nunito"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/custom_button"
+                android:text="Batch - 10"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>

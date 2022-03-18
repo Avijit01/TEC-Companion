@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,13 +26,14 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class StudentProfile extends AppCompatActivity {
 
     private Toolbar mToolbar;
-    private TextView txtStudentFullName, txtStudentId, txtStudentBatch, txtStudentSession, txtStudentPhone, txtStudentGuardianPhone, txtStudentAddress, txtStudentEmail, txtStudentPassword;
-    private Button editButtion;
+    private TextView txtStudentFullName, txtStudentId, txtStudentDept, txtStudentBatch, txtStudentSession, txtStudentPhone, txtStudentGuardianPhone, txtStudentAddress, txtStudentEmail, txtStudentPassword;
+    private Button editButton;
     private CircleImageView profileImageView;
+    private String imageSend;
 
     private FirebaseUser currentUser;
     private FirebaseAuth mAuth;
-    String currentUserID;
+    private String currentUserID;
     private DatabaseReference RootRef;
 
     @Override
@@ -52,21 +54,39 @@ public class StudentProfile extends AppCompatActivity {
 
         InitializeFields();
 
-        editButtion = (Button) findViewById(R.id.studentProfile_ButtonId);
-        editButtion.setOnClickListener(new View.OnClickListener() {
+        editButton = (Button) findViewById(R.id.studentProfile_ButtonId);
+        editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 StudentProfileUpdateActivity();
             }
         });
 
+
         RetrieveUserInfo();
+
+        profileImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SendToImageFullScreen();
+            }
+        });
+    }
+
+    private void SendToImageFullScreen()
+    {
+        String visit_image = imageSend;
+
+        Intent imageFullScreen = new Intent(this, ImageFullScreen.class);
+        imageFullScreen.putExtra("visit_image",visit_image);
+        startActivity(imageFullScreen);
     }
 
     private void InitializeFields()
     {
         txtStudentFullName = (TextView)  findViewById(R.id.studentProfile_FullNameId);
         txtStudentId = (TextView)  findViewById(R.id.studentProfile_IDId);
+        txtStudentDept = (TextView) findViewById(R.id.studentProfile_DeptId);
         txtStudentBatch = (TextView)  findViewById(R.id.studentProfile_BatchId);
         txtStudentSession = (TextView)  findViewById(R.id.studentProfile_SessionId);
         txtStudentPhone = (TextView)  findViewById(R.id.studentProfile_PhoneNoId);
@@ -74,7 +94,6 @@ public class StudentProfile extends AppCompatActivity {
         txtStudentAddress = (TextView)  findViewById(R.id.studentProfile_AddressId);
         txtStudentEmail = (TextView)  findViewById(R.id.studentProfile_EmailId);
         profileImageView = (CircleImageView) findViewById(R.id.studentProfile_ImageStudentId);
-
     }
 
     private void RetrieveUserInfo()
@@ -88,6 +107,7 @@ public class StudentProfile extends AppCompatActivity {
                         {
                             String retrieveFullName = snapshot.child("FullName").getValue().toString();
                             String retrieveID = snapshot.child("ID").getValue().toString();
+                            String retrieveDept = snapshot.child("Dept").getValue().toString();
                             String retrieveBatch = snapshot.child("Batch").getValue().toString();
                             String retrieveSession = snapshot.child("Session").getValue().toString();
                             String retrievePhone = snapshot.child("Phone").getValue().toString();
@@ -96,8 +116,11 @@ public class StudentProfile extends AppCompatActivity {
                             String retrieveEmail = snapshot.child("Email").getValue().toString();
                             String retrieveProfileImage = snapshot.child("ImageUrl").getValue().toString();
 
+                            imageSend = retrieveProfileImage;
+
                             txtStudentFullName.setText(retrieveFullName);
                             txtStudentId.setText(retrieveID);
+                            txtStudentDept.setText(retrieveDept);
                             txtStudentBatch.setText(retrieveBatch);
                             txtStudentSession.setText(retrieveSession);
                             txtStudentPhone.setText(retrievePhone);

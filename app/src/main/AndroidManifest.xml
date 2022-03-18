@@ -8,28 +8,98 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/app_icon_latest"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/app_icon_latest"
         android:supportsRtl="true"
         android:theme="@style/Theme.TECCompanion">
         <activity
+            android:name=".ChatSection"
+            android:exported="false"
+            android:parentActivityName=".Chat"
+            />
+        <activity
+            android:name=".FindTeachersProfile"
+            android:exported="false"
+            android:parentActivityName=".FindTeachers" />
+        <activity
+            android:name=".FindStudentsProfile"
+            android:exported="false"
+            android:parentActivityName=".FindStudents" />
+        <activity
+            android:name=".FindTeachers"
+            android:exported="false"
+            android:parentActivityName=".Chat" />
+        <activity
+            android:name=".FindStudents"
+            android:exported="false"
+            android:parentActivityName=".Chat" />
+        <activity
+            android:name=".TeacherListProfile"
+            android:exported="false"
+            android:parentActivityName=".TeacherList" />
+        <activity
+            android:name=".ImageFullScreen"
+            android:exported="false" />
+        <activity
+            android:name=".BatchListProfile"
+            android:exported="false"
+            android:parentActivityName=".AllStudents" />
+        <activity
+            android:name=".BatchList"
+            android:exported="false"
+            android:parentActivityName=".StudentList" />
+        <activity
+            android:name=".AllStudents"
+            android:exported="false"
+            android:parentActivityName=".StudentList" />
+        <activity
+            android:name=".TeacherList"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".StudentList"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".TeacherProfileUpdate"
+            android:exported="false"
+            android:parentActivityName=".TeacherProfile" />
+        <activity
+            android:name=".TeacherProfile"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".TeacherVerifyProfile"
+            android:exported="false"
+            android:parentActivityName=".TeacherVerify" />
+        <activity
+            android:name=".TeacherVerify"
+            android:exported="false"
+            android:parentActivityName=".AdminHome" />
+        <activity
+            android:name=".Login"
+            android:exported="false" />
+        <activity
             android:name=".Waiting"
             android:exported="false"
-            android:parentActivityName=".Login"/>
+            android:parentActivityName=".Login" />
         <activity
             android:name=".StudentVerifyProfile"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".StudentVerify" />
         <activity
             android:name=".StudentVerify"
             android:exported="false"
             android:parentActivityName=".AdminHome" />
         <activity
             android:name=".SignupTeacher"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".SignupOptions" />
         <activity
             android:name=".SignupOptions"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".Login" />
         <activity
             android:name=".AdminHome"
             android:exported="false" />
@@ -38,22 +108,25 @@
             android:exported="false" />
         <activity
             android:name=".StudentProfileUpdate"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".StudentProfile" />
         <activity
             android:name=".StudentProfile"
             android:exported="false"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".Chat"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".Signup"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".SignupOptions" />
         <activity
-            android:name=".Login"
+            android:name=".SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

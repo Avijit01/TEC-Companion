@@ -39,7 +39,7 @@ public class StudentVerifyProfile extends AppCompatActivity
 
     private Toolbar mToolbar;
     private ProgressDialog loadingBar;
-    private TextView txtStudentFullName, txtStudentId, txtStudentBatch, txtStudentSession, txtStudentPhone, txtStudentGuardianPhone, txtStudentAddress, txtStudentEmail, txtStudentPassword;
+    private TextView txtStudentFullName, txtStudentId, txtStudentBatch, txtStudentSession, txtStudentPhone, txtStudentGuardianPhone, txtStudentAddress, txtStudentEmail, txtStudentDept;
     private Button acceptButton, rejectButton;
     private CircleImageView profileImageView;
 
@@ -55,6 +55,8 @@ public class StudentVerifyProfile extends AppCompatActivity
 
         mToolbar = (Toolbar) findViewById(R.id.studentVerifyProfile_toolbarId);
         setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle("Student Profile");
 
         RootRef = FirebaseDatabase.getInstance().getReference();
@@ -134,10 +136,12 @@ public class StudentVerifyProfile extends AppCompatActivity
                             String retrievePassword = snapshot.child("Password").getValue().toString();
                             String retrieveType = snapshot.child("Type").getValue().toString();
                             String retrieveUID = snapshot.child("UID").getValue().toString();
+                            String retrieveDept = snapshot.child("Dept").getValue().toString();
 
                             HashMap<String, String> profileMap = new HashMap<>();
                             profileMap.put("UID", retrieveUID);
                             profileMap.put("FullName", retrieveFullName);
+                            profileMap.put("Dept", retrieveDept);
                             profileMap.put("ID", retrieveID);
                             profileMap.put("Batch", retrieveBatch);
                             profileMap.put("Session", retrieveSession);
@@ -150,6 +154,7 @@ public class StudentVerifyProfile extends AppCompatActivity
                             profileMap.put("Level", retrieveLevel);
                             profileMap.put("ImageUrl", retrieveProfileImage);
 
+
                             RootRef.child("UsersVerified").child(receivedUserID)
                                     .setValue(profileMap)
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -159,6 +164,44 @@ public class StudentVerifyProfile extends AppCompatActivity
                                             if(task.isSuccessful())
                                             {
                                                 Toast.makeText(StudentVerifyProfile.this, "Verified Successfully...", Toast.LENGTH_SHORT).show();
+                                            }
+                                            else
+                                            {
+                                                String message = task.getException().toString();
+                                                Toast.makeText(StudentVerifyProfile.this, "Unsuccessful..." +message, Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+
+                            String batchQuery = retrieveBatch+"_"+retrieveID;
+
+                            HashMap<String, String> profileMapStudent = new HashMap<>();
+                            profileMapStudent.put("UID", retrieveUID);
+                            profileMapStudent.put("FullName", retrieveFullName);
+                            profileMapStudent.put("Dept", retrieveDept);
+                            profileMapStudent.put("ID", retrieveID);
+                            profileMapStudent.put("Batch", retrieveBatch);
+                            profileMapStudent.put("Session", retrieveSession);
+                            profileMapStudent.put("Phone", retrievePhone);
+                            profileMapStudent.put("Guardian Phone", retrieveGuardianPhone);
+                            profileMapStudent.put("Address", retrieveAddress);
+                            profileMapStudent.put("Email", retrieveEmail);
+                            profileMapStudent.put("Password", retrievePassword);
+                            profileMapStudent.put("Type", retrieveType);
+                            profileMapStudent.put("Level", retrieveLevel);
+                            profileMapStudent.put("ImageUrl", retrieveProfileImage);
+
+                            profileMapStudent.put("BatchQuery", batchQuery);
+
+                            RootRef.child("VerifiedStudents").child(receivedUserID)
+                                    .setValue(profileMapStudent)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task)
+                                        {
+                                            if(task.isSuccessful())
+                                            {
+                                                Toast.makeText(StudentVerifyProfile.this, "Verified Batch Successfully...", Toast.LENGTH_SHORT).show();
                                             }
                                             else
                                             {
@@ -190,8 +233,9 @@ public class StudentVerifyProfile extends AppCompatActivity
                     @Override
                     public void onSuccess(Void unused)
                     {
-                        Intent AdminHomeIntent = new Intent(StudentVerifyProfile.this, AdminHome.class);
-                        startActivity(AdminHomeIntent);
+                        Intent studentVerifyIntent = new Intent(StudentVerifyProfile.this, StudentVerify.class);
+                        startActivity(studentVerifyIntent);
+                        finish();
                     }
                 });
     }
@@ -201,6 +245,7 @@ public class StudentVerifyProfile extends AppCompatActivity
     {
         txtStudentFullName = (TextView)  findViewById(R.id.studentVerifyProfile_FullNameId);
         txtStudentId = (TextView)  findViewById(R.id.studentVerifyProfile_IDId);
+        txtStudentDept = (TextView)  findViewById(R.id.studentVerifyProfile_DeptId);
         txtStudentBatch = (TextView)  findViewById(R.id.studentVerifyProfile_BatchId);
         txtStudentSession = (TextView)  findViewById(R.id.studentVerifyProfile_SessionId);
         txtStudentPhone = (TextView)  findViewById(R.id.studentVerifyProfile_PhoneNoId);
@@ -211,7 +256,6 @@ public class StudentVerifyProfile extends AppCompatActivity
         acceptButton = (Button) findViewById(R.id.studentVerifyProfile_AcceptButtonId);
         rejectButton = (Button) findViewById(R.id.studentVerifyProfile_RejectButtonId);
         loadingBar = new ProgressDialog(this);
-
     }
 
     private void RetrieveStudentInfo()
@@ -232,6 +276,7 @@ public class StudentVerifyProfile extends AppCompatActivity
                             String retrieveAddress = snapshot.child("Address").getValue().toString();
                             String retrieveEmail = snapshot.child("Email").getValue().toString();
                             String retrieveProfileImage = snapshot.child("ImageUrl").getValue().toString();
+                            String retrieveDept = snapshot.child("Dept").getValue().toString();
                             email = retrieveEmail;
                             password = snapshot.child("Password").getValue().toString();
                             image = retrieveProfileImage;
@@ -244,6 +289,7 @@ public class StudentVerifyProfile extends AppCompatActivity
                             txtStudentGuardianPhone.setText(retrieveGuardianPhone);
                             txtStudentAddress.setText(retrieveAddress);
                             txtStudentEmail.setText(retrieveEmail);
+                            txtStudentDept.setText(retrieveDept);
                             Picasso.get().load(retrieveProfileImage).into(profileImageView);
                         }
                         else
@@ -298,6 +344,7 @@ public class StudentVerifyProfile extends AppCompatActivity
             public void onClick(DialogInterface dialog, int which)
             {
                 FirebaseAuth.getInstance().signOut();
+                Toast.makeText(StudentVerifyProfile.this, "Logout Success...", Toast.LENGTH_SHORT).show();
             }
         });
         builder.create();
@@ -321,8 +368,9 @@ public class StudentVerifyProfile extends AppCompatActivity
                                         if(task.isSuccessful())
                                         {
                                             StorageDelete();
-                                            Intent AdminHomeIntent = new Intent(StudentVerifyProfile.this, AdminHome.class);
-                                            startActivity(AdminHomeIntent);
+                                            Intent studentVerifyIntent = new Intent(StudentVerifyProfile.this, StudentVerify.class);
+                                            startActivity(studentVerifyIntent);
+                                            finish();
                                         }
                                         else
                                         {

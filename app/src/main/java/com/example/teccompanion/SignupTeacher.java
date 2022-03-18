@@ -38,8 +38,8 @@ public class SignupTeacher extends AppCompatActivity {
     private Toolbar mToolbar;
     private Button createAccountButton;
     private CircleImageView userImage;
-    private EditText userFullName, userPhone, userCurrentAddress, userEmail, userPassword;
-    private String fullName, id, batch, session, phone, guardianPhone, currentAddress, email, password, userType, level;
+    private EditText userFullName, userPhone, userCurrentAddress, userEmail, userPassword, userDept;
+    private String fullName, id, batch, session, phone, guardianPhone, currentAddress, email, password, userType, level, dept;
     private TextView alreadyHaveAnAccount;
 
     private FirebaseAuth mAuth;
@@ -63,6 +63,8 @@ public class SignupTeacher extends AppCompatActivity {
 
         mToolbar = (Toolbar) findViewById(R.id.SignupTeacher_toolbarId);
         setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle("Registration");
 
         mAuth = FirebaseAuth.getInstance();
@@ -110,6 +112,7 @@ public class SignupTeacher extends AppCompatActivity {
         userCurrentAddress = (EditText) findViewById(R.id.SignupTeacher_CurrentAddressId);
         userEmail = (EditText) findViewById(R.id.SignupTeacher_EmailId);
         userPassword = (EditText) findViewById(R.id.SignupTeacher_PasswordId);
+        userDept = (EditText) findViewById(R.id.SignupTeacher_DeptId);
 
         alreadyHaveAnAccount = (TextView) findViewById(R.id.SignupTeacher_alreadyHaveAnAccountId);
         loadingBar = new ProgressDialog(this);
@@ -129,10 +132,21 @@ public class SignupTeacher extends AppCompatActivity {
         password = userPassword.getText().toString();
         userType = "Teacher";
         level = "0";
+        dept = userDept.getText().toString();
 
         if(TextUtils.isEmpty(fullName))
         {
             Toast.makeText(this, "Please enter full name", Toast.LENGTH_SHORT).show();
+        }
+
+        if(TextUtils.isEmpty(dept))
+        {
+            Toast.makeText(this, "Please enter department", Toast.LENGTH_SHORT).show();
+        }
+
+        if(!dept.equals("CSE") && !dept.equals("EEE") && !dept.equals("Civil") && !dept.equals("Textile") && !dept.equals("ICE"))
+        {
+            Toast.makeText(this, "Please enter department correctly", Toast.LENGTH_SHORT).show();
         }
 
 
@@ -156,6 +170,12 @@ public class SignupTeacher extends AppCompatActivity {
         {
             Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show();
         }
+
+        if(password.length() < 6 || password.length() >12)
+        {
+            Toast.makeText(this, "Password length should be 6 to 12", Toast.LENGTH_SHORT).show();
+        }
+
 
         if(flag == 0)
         {
@@ -206,6 +226,7 @@ public class SignupTeacher extends AppCompatActivity {
                                                     profileMap.put("Password", password);
                                                     profileMap.put("Type", userType);
                                                     profileMap.put("Level", level);
+                                                    profileMap.put("Dept", dept);
                                                     profileMap.put("ImageUrl", String.valueOf(uri));
 
                                                     dataStore.setValue(profileMap)

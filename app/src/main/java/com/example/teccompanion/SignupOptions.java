@@ -20,6 +20,8 @@ public class SignupOptions extends AppCompatActivity {
 
         mToolbar = (Toolbar) findViewById(R.id.SignupOptions_toolbarId);
         setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle("Registration Options");
 
         signupStudentBtn = (Button) findViewById(R.id.SignupOptions_StudentBtnId);

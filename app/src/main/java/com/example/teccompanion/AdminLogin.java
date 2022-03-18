@@ -46,6 +46,7 @@ public class AdminLogin extends AppCompatActivity {
         Initializations();
 
 
+        adminAddUserBtn.setVisibility(View.INVISIBLE);
         adminAddUserBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
