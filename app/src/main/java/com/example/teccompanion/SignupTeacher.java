@@ -39,7 +39,7 @@ public class SignupTeacher extends AppCompatActivity {
     private Button createAccountButton;
     private CircleImageView userImage;
     private EditText userFullName, userPhone, userCurrentAddress, userEmail, userPassword, userDept;
-    private String fullName, id, batch, session, phone, guardianPhone, currentAddress, email, password, userType, level, dept;
+    private String fullName, id, batch, session, regular, phone, guardianPhone, currentAddress, email, password, userType, level, dept;
     private TextView alreadyHaveAnAccount;
 
     private FirebaseAuth mAuth;
@@ -132,6 +132,7 @@ public class SignupTeacher extends AppCompatActivity {
         password = userPassword.getText().toString();
         userType = "Teacher";
         level = "0";
+        regular = "";
         dept = userDept.getText().toString();
 
         if(TextUtils.isEmpty(fullName))
@@ -228,6 +229,8 @@ public class SignupTeacher extends AppCompatActivity {
                                                     profileMap.put("Level", level);
                                                     profileMap.put("Dept", dept);
                                                     profileMap.put("ImageUrl", String.valueOf(uri));
+
+                                                    profileMap.put("Regularity",regular);
 
                                                     dataStore.setValue(profileMap)
                                                             .addOnCompleteListener(new OnCompleteListener<Void>() {

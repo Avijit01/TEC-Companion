@@ -57,7 +57,7 @@ public class BatchList extends AppCompatActivity
 
         FirebaseRecyclerOptions<ModelStudentVerify> options =
                 new FirebaseRecyclerOptions.Builder<ModelStudentVerify>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("UsersVerified").orderByChild("Batch").equalTo(""+receiveBatchNo), ModelStudentVerify.class)
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("VerifiedStudents").orderByChild("BatchQuery").startAt(""+receiveBatchNo).endAt(""+receiveBatchNo+"\uf8ff"), ModelStudentVerify.class)
                         .build();
 
 

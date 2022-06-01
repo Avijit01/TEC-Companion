@@ -112,6 +112,7 @@
             <Button
                 android:id="@+id/studentList_Batch7ButtonId"
                 android:layout_width="match_parent"
+                android:visibility="invisible"
                 android:layout_height="60dp"
                 android:fontFamily="@font/nunito"
                 android:layout_marginTop="20dp"
@@ -125,6 +126,7 @@
                 android:id="@+id/studentList_Batch8ButtonId"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:visibility="invisible"
                 android:fontFamily="@font/nunito"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/custom_button"
@@ -137,6 +139,7 @@
                 android:id="@+id/studentList_Batch9ButtonId"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:visibility="invisible"
                 android:fontFamily="@font/nunito"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/custom_button"
@@ -149,10 +152,37 @@
                 android:id="@+id/studentList_Batch10ButtonId"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:visibility="invisible"
                 android:fontFamily="@font/nunito"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/custom_button"
                 android:text="Batch - 10"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/studentList_Batch11ButtonId"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:visibility="invisible"
+                android:fontFamily="@font/nunito"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/custom_button"
+                android:text="Batch - 11"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/studentList_Batch12ButtonId"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:visibility="invisible"
+                android:fontFamily="@font/nunito"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/custom_button"
+                android:text="Batch - 12"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp" />

@@ -2,4 +2,13 @@
     <string name="app_name">TEC Companion</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="Regularity">
+
+        <item>Regular</item>
+        <item>Irregular - 1</item>
+        <item>Irregular - 2</item>
+
+    </string-array>
+
 </resources>

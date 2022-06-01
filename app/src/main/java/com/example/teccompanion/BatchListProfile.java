@@ -26,6 +26,7 @@ public class BatchListProfile extends AppCompatActivity
     private String receivedUserID;
 
     private Toolbar mToolbar;
+    private TextView txtStudentRegular;
     private TextView txtStudentFullName, txtStudentId, txtStudentBatch, txtStudentSession, txtStudentPhone, txtStudentGuardianPhone, txtStudentAddress, txtStudentEmail, txtStudentDept;
     private CircleImageView profileImageView;
     private String imageSend;
@@ -70,6 +71,8 @@ public class BatchListProfile extends AppCompatActivity
         txtStudentAddress = (TextView)  findViewById(R.id.batchListProfile_AddressId);
         txtStudentEmail = (TextView)  findViewById(R.id.batchListProfile_EmailId);
         profileImageView = (CircleImageView) findViewById(R.id.batchListProfile_ImageStudentId);
+
+        txtStudentRegular = (TextView)  findViewById(R.id.batchListProfile_RegularId);
     }
 
     private void RetrieveStudentInfo()
@@ -92,6 +95,8 @@ public class BatchListProfile extends AppCompatActivity
                             String retrieveProfileImage = snapshot.child("ImageUrl").getValue().toString();
                             String retrieveDept = snapshot.child("Dept").getValue().toString();
 
+                            String retrieveRegular = snapshot.child("Regularity").getValue().toString();
+
                             imageSend = retrieveProfileImage;
 
                             txtStudentFullName.setText(retrieveFullName);
@@ -104,6 +109,8 @@ public class BatchListProfile extends AppCompatActivity
                             txtStudentEmail.setText(retrieveEmail);
                             txtStudentDept.setText(retrieveDept);
                             Picasso.get().load(retrieveProfileImage).into(profileImageView);
+
+                            txtStudentRegular.setText(retrieveRegular);
                         }
                         else
                         {

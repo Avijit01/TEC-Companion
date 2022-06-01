@@ -1,5 +1,6 @@
 package com.example.teccompanion;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
@@ -10,14 +11,23 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class StudentList extends AppCompatActivity
 {
-    Button allStudentsBtn, batch1Btn, batch2Btn, batch3Btn, batch4Btn, batch5Btn, batch6Btn, batch7Btn, batch8Btn, batch9Btn, batch10Btn;
+    Button allStudentsBtn, batch1Btn, batch2Btn, batch3Btn, batch4Btn, batch5Btn, batch6Btn, batch7Btn, batch8Btn, batch9Btn, batch10Btn, batch11Btn, batch12Btn;
     private Toolbar mToolbar;
     private String batchNo;
+    private DatabaseReference RootRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +40,8 @@ public class StudentList extends AppCompatActivity
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle("Student List");
 
+        RootRef = FirebaseDatabase.getInstance().getReference();
+
         InitializeFields();
 
         allStudentsBtn.setOnClickListener(new View.OnClickListener() {
@@ -39,7 +51,113 @@ public class StudentList extends AppCompatActivity
             }
         });
 
+        BatchButtonVisibility();
         BatchButtonTasks();
+    }
+
+    private void BatchButtonVisibility()
+    {
+        RootRef.child("Batch").child("batch-7")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot)
+                    {
+                        if(snapshot.exists())
+                        {
+                            batch7Btn.setVisibility(View.VISIBLE);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+        RootRef.child("Batch").child("batch-8")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot)
+                    {
+                        if(snapshot.exists())
+                        {
+                            batch8Btn.setVisibility(View.VISIBLE);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+        RootRef.child("Batch").child("batch-9")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot)
+                    {
+                        if(snapshot.exists())
+                        {
+                            batch9Btn.setVisibility(View.VISIBLE);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+        RootRef.child("Batch").child("batch-10")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot)
+                    {
+                        if(snapshot.exists())
+                        {
+                            batch10Btn.setVisibility(View.VISIBLE);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+        RootRef.child("Batch").child("batch-11")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot)
+                    {
+                        if(snapshot.exists())
+                        {
+                            batch11Btn.setVisibility(View.VISIBLE);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+        RootRef.child("Batch").child("batch-12")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot)
+                    {
+                        if(snapshot.exists())
+                        {
+                            batch12Btn.setVisibility(View.VISIBLE);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
     }
 
 
@@ -56,6 +174,8 @@ public class StudentList extends AppCompatActivity
         batch8Btn = (Button) findViewById(R.id.studentList_Batch8ButtonId);
         batch9Btn = (Button) findViewById(R.id.studentList_Batch9ButtonId);
         batch10Btn = (Button) findViewById(R.id.studentList_Batch10ButtonId);
+        batch11Btn = (Button) findViewById(R.id.studentList_Batch11ButtonId);
+        batch12Btn = (Button) findViewById(R.id.studentList_Batch12ButtonId);
     }
 
 
@@ -161,6 +281,24 @@ public class StudentList extends AppCompatActivity
             public void onClick(View v)
             {
                 batchNo = "10";
+                SendToBatchList();
+            }
+        });
+
+        batch11Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                batchNo = "11";
+                SendToBatchList();
+            }
+        });
+
+        batch12Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                batchNo = "12";
                 SendToBatchList();
             }
         });

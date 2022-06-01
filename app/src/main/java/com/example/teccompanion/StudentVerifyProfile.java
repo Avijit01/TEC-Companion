@@ -39,9 +39,12 @@ public class StudentVerifyProfile extends AppCompatActivity
 
     private Toolbar mToolbar;
     private ProgressDialog loadingBar;
-    private TextView txtStudentFullName, txtStudentId, txtStudentBatch, txtStudentSession, txtStudentPhone, txtStudentGuardianPhone, txtStudentAddress, txtStudentEmail, txtStudentDept;
+    private TextView txtStudentFullName, txtStudentId, txtStudentBatch, txtStudentSession, txtStudentRegular, txtStudentPhone, txtStudentGuardianPhone, txtStudentAddress, txtStudentEmail, txtStudentDept;
     private Button acceptButton, rejectButton;
     private CircleImageView profileImageView;
+
+    private int batchInt;
+    private String batchQuery;
 
     private FirebaseUser currentUser;
     private FirebaseAuth mAuth;
@@ -57,7 +60,7 @@ public class StudentVerifyProfile extends AppCompatActivity
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle("Student Profile");
+        getSupportActionBar().setTitle("Student Profile Verify");
 
         RootRef = FirebaseDatabase.getInstance().getReference();
 
@@ -138,6 +141,8 @@ public class StudentVerifyProfile extends AppCompatActivity
                             String retrieveUID = snapshot.child("UID").getValue().toString();
                             String retrieveDept = snapshot.child("Dept").getValue().toString();
 
+                            String retrieveRegularity = snapshot.child("Regularity").getValue().toString();
+
                             HashMap<String, String> profileMap = new HashMap<>();
                             profileMap.put("UID", retrieveUID);
                             profileMap.put("FullName", retrieveFullName);
@@ -153,6 +158,8 @@ public class StudentVerifyProfile extends AppCompatActivity
                             profileMap.put("Type", retrieveType);
                             profileMap.put("Level", retrieveLevel);
                             profileMap.put("ImageUrl", retrieveProfileImage);
+
+                            profileMap.put("Regularity", retrieveRegularity);
 
 
                             RootRef.child("UsersVerified").child(receivedUserID)
@@ -173,7 +180,24 @@ public class StudentVerifyProfile extends AppCompatActivity
                                         }
                                     });
 
-                            String batchQuery = retrieveBatch+"_"+retrieveID;
+
+                            batchQuery = retrieveBatch+"_"+retrieveID;
+
+                            batchInt = Integer.parseInt(retrieveBatch);
+
+                            if(retrieveRegularity.equals("Irregular-1"))
+                            {
+                                batchInt = batchInt + 1;
+                                batchQuery = batchInt + "_"+retrieveID;
+                            }
+
+                            if(retrieveRegularity.equals("Irregular-2"))
+                            {
+                                batchInt = batchInt + 2;
+                                batchQuery = batchInt + "_"+retrieveID;
+                            }
+
+
 
                             HashMap<String, String> profileMapStudent = new HashMap<>();
                             profileMapStudent.put("UID", retrieveUID);
@@ -191,6 +215,7 @@ public class StudentVerifyProfile extends AppCompatActivity
                             profileMapStudent.put("Level", retrieveLevel);
                             profileMapStudent.put("ImageUrl", retrieveProfileImage);
 
+                            profileMapStudent.put("Regularity",retrieveRegularity);
                             profileMapStudent.put("BatchQuery", batchQuery);
 
                             RootRef.child("VerifiedStudents").child(receivedUserID)
@@ -211,10 +236,31 @@ public class StudentVerifyProfile extends AppCompatActivity
                                         }
                                     });
 
+                            HashMap<String, String> profileBatch = new HashMap<>();
+                            profileBatch.put("Batch", retrieveBatch);
+
+                            RootRef.child("Batch").child("batch-"+retrieveBatch)
+                                    .setValue(profileBatch)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task)
+                                        {
+                                            if(task.isSuccessful())
+                                            {
+                                                //Toast.makeText(StudentVerifyProfile.this, "Verified Batch Successfully...", Toast.LENGTH_SHORT).show();
+                                            }
+                                            else
+                                            {
+                                                String message = task.getException().toString();
+                                                Toast.makeText(StudentVerifyProfile.this, "Unsuccessful..." +message, Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+
                         }
                         else
                         {
-                            Toast.makeText(StudentVerifyProfile.this, "Please Set Your Profile", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(StudentVerifyProfile.this, "Please Set Your Profile", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -253,6 +299,9 @@ public class StudentVerifyProfile extends AppCompatActivity
         txtStudentAddress = (TextView)  findViewById(R.id.studentVerifyProfile_AddressId);
         txtStudentEmail = (TextView)  findViewById(R.id.studentVerifyProfile_EmailId);
         profileImageView = (CircleImageView) findViewById(R.id.studentVerifyProfile_ImageStudentId);
+
+        txtStudentRegular = (TextView)  findViewById(R.id.studentVerifyProfile_RegularId);
+
         acceptButton = (Button) findViewById(R.id.studentVerifyProfile_AcceptButtonId);
         rejectButton = (Button) findViewById(R.id.studentVerifyProfile_RejectButtonId);
         loadingBar = new ProgressDialog(this);
@@ -277,6 +326,9 @@ public class StudentVerifyProfile extends AppCompatActivity
                             String retrieveEmail = snapshot.child("Email").getValue().toString();
                             String retrieveProfileImage = snapshot.child("ImageUrl").getValue().toString();
                             String retrieveDept = snapshot.child("Dept").getValue().toString();
+
+                            String retrieveRegular = snapshot.child("Regularity").getValue().toString();
+
                             email = retrieveEmail;
                             password = snapshot.child("Password").getValue().toString();
                             image = retrieveProfileImage;
@@ -290,6 +342,9 @@ public class StudentVerifyProfile extends AppCompatActivity
                             txtStudentAddress.setText(retrieveAddress);
                             txtStudentEmail.setText(retrieveEmail);
                             txtStudentDept.setText(retrieveDept);
+
+                            txtStudentRegular.setText(retrieveRegular);
+
                             Picasso.get().load(retrieveProfileImage).into(profileImageView);
                         }
                         else

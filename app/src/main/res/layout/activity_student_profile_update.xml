@@ -107,6 +107,22 @@
                 android:textSize="15sp" />
 
             <EditText
+                android:id="@+id/studentProfileUpdate_RegularId"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:fontFamily="@font/nunito"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_input"
+                android:drawableStart="@drawable/custom_session_icon"
+                android:drawablePadding="12dp"
+                android:ems="10"
+                android:hint="Session Ex: 2016-17"
+                android:inputType="text"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textSize="15sp" />
+
+            <EditText
                 android:id="@+id/studentProfileUpdate_PhoneId"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"

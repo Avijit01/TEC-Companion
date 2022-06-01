@@ -29,9 +29,9 @@
             android:layout_height="110dp"
             android:layout_gravity="center"
             android:padding="2dp"
-            android:src="@drawable/avatar"
+            android:src="@drawable/tec"
             app:civ_border_color="#FFFFFF"
-            app:civ_border_width="2dp" />
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -51,7 +51,6 @@
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
-        android:gravity="center"
         >
 
         <LinearLayout
@@ -59,20 +58,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center"
             >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_weight="1">
+                android:orientation="vertical">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/AdminHome_StudentVerifyId"
-                    android:layout_width="150dp"
+                    android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:layout_margin="10dp"
+                    android:layout_margin="25dp"
                     app:cardCornerRadius="15dp"
                     app:cardBackgroundColor="#006257"
                     >
@@ -81,13 +78,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/custom_layout_style"
-                        android:orientation="vertical"
-                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:gravity="center|left"
                         android:layout_gravity="center">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="25dp"
                             android:layout_gravity="center"
                             android:background="@drawable/studentlist"/>
 
@@ -97,6 +95,7 @@
                             android:text="Verify Student"
                             android:fontFamily="@font/nunito"
                             android:textSize="18sp"
+                            android:layout_marginLeft="15dp"
                             android:textColor="@color/white"
                             />
 
@@ -106,9 +105,10 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/AdminHome_TeacherVerifyId"
-                    android:layout_width="150dp"
+                    android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:layout_margin="10dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
                     app:cardCornerRadius="15dp"
                     app:cardBackgroundColor="#006257"
                     >
@@ -117,13 +117,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/custom_layout_style"
-                        android:orientation="vertical"
-                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:gravity="center|left"
                         android:layout_gravity="center">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="25dp"
                             android:layout_gravity="center"
                             android:background="@drawable/teacherlist"/>
 
@@ -133,6 +134,7 @@
                             android:text="Verify Teacher"
                             android:fontFamily="@font/nunito"
                             android:textSize="18sp"
+                            android:layout_marginLeft="15dp"
                             android:textColor="@color/white"
                             />
 
@@ -143,88 +145,6 @@
 
             </LinearLayout>
 
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_weight="1">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/adminEditButton"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_margin="10dp"
-                    app:cardCornerRadius="15dp"
-                    app:cardBackgroundColor="#006257"
-                    >
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/custom_layout_style"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:layout_gravity="center">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:background="@drawable/chat"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Edit"
-                            android:fontFamily="@font/nunito"
-                            android:textSize="18sp"
-                            android:textColor="@color/white"
-                            />
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/adminDocumentId"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_margin="10dp"
-                    app:cardCornerRadius="15dp"
-                    app:cardBackgroundColor="#006257"
-                    >
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/custom_layout_style"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:layout_gravity="center">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:background="@drawable/document"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Document"
-                            android:fontFamily="@font/nunito"
-                            android:textSize="18sp"
-                            android:textColor="@color/white"
-                            />
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-
-            </LinearLayout>
 
         </LinearLayout>
 

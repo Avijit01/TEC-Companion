@@ -42,6 +42,8 @@ public class ContactsFragment extends Fragment
     private String currentUserId;
     private DatabaseReference ContactsRef, UsersVerified;
 
+    private String typeForIntent;
+
 
     public ContactsFragment() {
         // Required empty public constructor
@@ -121,8 +123,37 @@ public class ContactsFragment extends Fragment
                                         holder.fullName.setText(contactFullName);
                                         holder.type.setText(contactType);
                                         Picasso.get().load(profileImage).into(holder.img);
+
+                                        typeForIntent = holder.type.getText().toString();
                                     }
+
                                 }
+
+                                if(typeForIntent.equals("Teacher"))
+                                    holder.itemView.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v)
+                                        {
+
+                                            Intent profileIntent = new Intent(getContext(), FindTeachersProfile.class);
+                                            profileIntent.putExtra("visit_teacher_id",userIDs);
+                                            startActivity(profileIntent);
+
+                                        }
+                                    });
+
+                                if(typeForIntent.equals("Student"))
+                                    holder.itemView.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v)
+                                        {
+
+                                            Intent profileIntent = new Intent(getContext(), FindStudentsProfile.class);
+                                            profileIntent.putExtra("visit_student_id",userIDs);
+                                            startActivity(profileIntent);
+
+                                        }
+                                    });
                             }
 
                             @Override

@@ -30,7 +30,7 @@
             android:layout_gravity="center"
             android:padding="2dp"
             android:src="@drawable/avatar"
-            app:civ_border_color="#FFFFFF"
+            app:civ_border_color="#575757"
             app:civ_border_width="1dp" />
 
         <TextView
@@ -91,7 +91,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:background="@drawable/studentlist"/>
+                            android:background="@drawable/studentlist"
+                            />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -215,7 +216,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Document"
+                            android:text="Edit Profile"
+                            android:gravity="center"
                             android:fontFamily="@font/nunito"
                             android:textSize="18sp"
                             android:textColor="@color/white"

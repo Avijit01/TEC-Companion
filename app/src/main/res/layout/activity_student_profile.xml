@@ -201,6 +201,37 @@
 
                 </LinearLayout>
 
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:drawableStart="@drawable/full_name"
+                        android:gravity="center|left"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:text=" Type: "
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/studentProfile_RegularId"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:gravity="center|left"
+                        android:text="Regular"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -269,7 +300,7 @@
 
                     <TextView
                         android:layout_width="60dp"
-                        android:layout_height="50dp"
+                        android:layout_height="65dp"
                         android:layout_weight="2"
                         android:drawableStart="@drawable/custom_address_icon"
                         android:gravity="center|left"
@@ -281,7 +312,7 @@
                     <TextView
                         android:id="@+id/studentProfile_AddressId"
                         android:layout_width="100dp"
-                        android:layout_height="50dp"
+                        android:layout_height="65dp"
                         android:layout_weight="2"
                         android:gravity="center|left"
                         android:text="Address"
@@ -327,6 +358,19 @@
                     android:layout_marginTop="20dp"
                     android:background="@drawable/custom_button"
                     android:text="Edit Profile"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/studentProfile_DeleteButtonId"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:fontFamily="@font/nunito"
+                    android:visibility="invisible"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/custom_button_reject"
+                    android:text="Delete Account"
                     android:textAllCaps="false"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp" />

@@ -40,8 +40,6 @@ public class Chat extends AppCompatActivity {
 
         mToolbar = (Toolbar) findViewById(R.id.chat_toolbarId);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle("Chat");
 
         mAuth = FirebaseAuth.getInstance();

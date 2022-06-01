@@ -14,9 +14,14 @@
         ></include>
 
 
+    <ScrollView
+        android:id="@+id/studentProfile_ScrollId"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/teacherProfile_toolbarId"
+        >
 
         <LinearLayout
-            android:layout_below="@+id/teacherProfile_toolbarId"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white"
@@ -145,7 +150,7 @@
 
                     <TextView
                         android:layout_width="60dp"
-                        android:layout_height="50dp"
+                        android:layout_height="65dp"
                         android:layout_weight="2"
                         android:drawableStart="@drawable/custom_address_icon"
                         android:text=" Address:"
@@ -157,7 +162,7 @@
                     <TextView
                         android:id="@+id/teacherProfile_AddressId"
                         android:layout_width="100dp"
-                        android:layout_height="50dp"
+                        android:layout_height="65dp"
                         android:layout_weight="2"
                         android:text="Address"
                         android:gravity="center|left"
@@ -199,10 +204,11 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:gravity="center|bottom"
-                android:padding="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
                 >
 
                 <Button
@@ -211,9 +217,23 @@
                     android:layout_gravity="center|bottom"
                     android:layout_height="60dp"
                     android:fontFamily="@font/nunito"
-                    android:layout_marginTop="20dp"
                     android:background="@drawable/custom_button"
                     android:text="Edit Profile"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/teacherProfile_DeleteButtonId"
+                    android:layout_width="match_parent"
+                    android:layout_gravity="center|bottom"
+                    android:layout_height="60dp"
+                    android:fontFamily="@font/nunito"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/custom_button_reject"
+                    android:text="Delete Profile"
+                    android:visibility="invisible"
                     android:textAllCaps="false"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp" />
@@ -221,6 +241,10 @@
             </LinearLayout>
 
         </LinearLayout>
+
+    </ScrollView>
+
+
 
 
 </RelativeLayout>

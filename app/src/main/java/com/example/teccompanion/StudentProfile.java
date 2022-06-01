@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,13 +23,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.HashMap;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class StudentProfile extends AppCompatActivity {
 
     private Toolbar mToolbar;
+    private TextView txtStudentRegular;
     private TextView txtStudentFullName, txtStudentId, txtStudentDept, txtStudentBatch, txtStudentSession, txtStudentPhone, txtStudentGuardianPhone, txtStudentAddress, txtStudentEmail, txtStudentPassword;
-    private Button editButton;
+    private Button editButton, deleteButton;
     private CircleImageView profileImageView;
     private String imageSend;
 
@@ -35,6 +40,9 @@ public class StudentProfile extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private String currentUserID;
     private DatabaseReference RootRef;
+
+    private String fullNameDelete, typeDelete, UID_Delete;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +79,72 @@ public class StudentProfile extends AppCompatActivity {
                 SendToImageFullScreen();
             }
         });
+
+
+        deleteButton = (Button) findViewById(R.id.studentProfile_DeleteButtonId);
+
+        /*
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CreateDialogDelete();
+            }
+        });
+
+         */
     }
+
+
+
+    private void CreateDialogDelete()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Do You Want to Delete the Account?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                ProfileUpdate();
+            }
+        });
+
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+
+            }
+        });
+        builder.create();
+        builder.show();
+    }
+
+
+    private void ProfileUpdate()
+    {
+        String setValue = "";
+        typeDelete = "User Deleted";
+
+        HashMap<String, Object> profileMap = new HashMap<>();
+        profileMap.put("ID", setValue);
+        profileMap.put("Batch", setValue);
+        profileMap.put("Session", setValue);
+        profileMap.put("Phone", setValue);
+        profileMap.put("Guardian Phone", setValue);
+        profileMap.put("Address", setValue);
+        profileMap.put("Email", setValue);
+        profileMap.put("Password", setValue);
+        profileMap.put("Level", setValue);
+        profileMap.put("Dept", setValue);
+        profileMap.put("Regularity",setValue);
+
+        profileMap.put("Type", typeDelete);
+        profileMap.put("UID", currentUserID);
+        profileMap.put("FullName", fullNameDelete);
+        profileMap.put("ImageUrl", String.valueOf(imageSend));
+    }
+
+
 
     private void SendToImageFullScreen()
     {
@@ -94,6 +167,8 @@ public class StudentProfile extends AppCompatActivity {
         txtStudentAddress = (TextView)  findViewById(R.id.studentProfile_AddressId);
         txtStudentEmail = (TextView)  findViewById(R.id.studentProfile_EmailId);
         profileImageView = (CircleImageView) findViewById(R.id.studentProfile_ImageStudentId);
+
+        txtStudentRegular = (TextView)  findViewById(R.id.studentProfile_RegularId);
     }
 
     private void RetrieveUserInfo()
@@ -116,7 +191,11 @@ public class StudentProfile extends AppCompatActivity {
                             String retrieveEmail = snapshot.child("Email").getValue().toString();
                             String retrieveProfileImage = snapshot.child("ImageUrl").getValue().toString();
 
+                            String retriveRegular = snapshot.child("Regularity").getValue().toString();
+
                             imageSend = retrieveProfileImage;
+
+                            fullNameDelete = retrieveFullName;
 
                             txtStudentFullName.setText(retrieveFullName);
                             txtStudentId.setText(retrieveID);
@@ -127,6 +206,8 @@ public class StudentProfile extends AppCompatActivity {
                             txtStudentGuardianPhone.setText(retrieveGuardianPhone);
                             txtStudentAddress.setText(retrieveAddress);
                             txtStudentEmail.setText(retrieveEmail);
+
+                            txtStudentRegular.setText(retriveRegular);
                             Picasso.get().load(retrieveProfileImage).into(profileImageView);
                         }
                         else

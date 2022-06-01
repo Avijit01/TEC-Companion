@@ -3,6 +3,7 @@ package com.example.teccompanion;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -37,6 +38,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     {
         public TextView senderMessageText, receiverMessageText;
         public CircleImageView receiverProfileImage;
+        public ImageView messageSenderPic, messageReceiverPic;
 
         public MessageViewHolder(@NonNull View itemView)
         {
@@ -45,6 +47,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             senderMessageText = (TextView) itemView.findViewById(R.id.sender_messages_textId);
             receiverMessageText = (TextView) itemView.findViewById(R.id.receiver_messages_textId);
             receiverProfileImage = (CircleImageView) itemView.findViewById(R.id.message_profile_imageId);
+            messageSenderPic = (ImageView) itemView.findViewById(R.id.sender_messages_ImageId);
+            messageReceiverPic = (ImageView) itemView.findViewById(R.id.receiver_messages_ImageId);
         }
     }
 
@@ -93,18 +97,24 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             }
         });
 
+
+
+        holder.receiverMessageText.setVisibility(View.GONE);
+        holder.receiverProfileImage.setVisibility(View.GONE);
+        holder.senderMessageText.setVisibility(View.GONE);
+        holder.messageSenderPic.setVisibility(View.GONE);
+        holder.messageReceiverPic.setVisibility(View.GONE);
+
+
         if(fromMessageType.equals("text"))
         {
-            holder.receiverMessageText.setVisibility(View.INVISIBLE);
-            holder.receiverProfileImage.setVisibility(View.INVISIBLE);
-            holder.senderMessageText.setVisibility(View.INVISIBLE);
 
             if(fromUserID.equals(messageSenderID))
             {
                 holder.senderMessageText.setVisibility(View.VISIBLE);
 
                 holder.senderMessageText.setBackgroundResource(R.drawable.sender_messages_layout);
-                holder.senderMessageText.setText(messages.getMessage());
+                holder.senderMessageText.setText(messages.getMessage() + "\n \n" + messages.getTime() + " - " + messages.getDate());
             }
 
             else
@@ -113,7 +123,24 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
                 holder.receiverMessageText.setVisibility(View.VISIBLE);
 
                 holder.receiverMessageText.setBackgroundResource(R.drawable.receiver_messages_layout);
-                holder.receiverMessageText.setText(messages.getMessage());
+                holder.receiverMessageText.setText(messages.getMessage() + "\n \n" + messages.getTime() + " - " + messages.getDate());
+            }
+        }
+
+        else if(fromMessageType.equals("image"))
+        {
+            if(fromUserID.equals(messageSenderID))
+            {
+                holder.messageSenderPic.setVisibility(View.VISIBLE);
+
+                Picasso.get().load(messages.getMessage()).into(holder.messageSenderPic);
+            }
+            else
+            {
+                holder.receiverProfileImage.setVisibility(View.VISIBLE);
+                holder.messageReceiverPic.setVisibility(View.VISIBLE);
+
+                Picasso.get().load(messages.getMessage()).into(holder.messageReceiverPic);
             }
         }
 

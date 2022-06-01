@@ -40,11 +40,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class StudentProfileUpdate extends AppCompatActivity
 {
     private Toolbar mToolbar;
-    private TextView txtStudentFullName, txtStudentId, txtStudentBatch, txtStudentSession, txtStudentPhone, txtStudentGuardianPhone, txtStudentAddress, txtStudentEmail, txtStudentPassword;
+    private TextView txtStudentFullName, txtStudentId, txtStudentBatch, txtStudentSession, txtStudentRegular, txtStudentPhone, txtStudentGuardianPhone, txtStudentAddress, txtStudentEmail, txtStudentPassword;
     private Button updateButton;
     private CircleImageView profileImageView;
     private String uid, type, level, dept;
-    private String fullName, id, batch, session, phone, guardianPhone, address, email, password, image;
+    private String fullName, id, batch, session, regular, phone, guardianPhone, address, email, password, image;
 
     private FirebaseUser currentUser;
     private FirebaseAuth mAuth;
@@ -58,6 +58,8 @@ public class StudentProfileUpdate extends AppCompatActivity
     private StorageReference filePath;
     private DatabaseReference dataStore;
     private int flag = 0;
+    private int batchInt;
+    private String batchQuery;
 
 
     @Override
@@ -128,6 +130,9 @@ public class StudentProfileUpdate extends AppCompatActivity
         txtStudentEmail = (TextView)  findViewById(R.id.studentProfileUpdate_EmailId);
         txtStudentPassword = (TextView)  findViewById(R.id.studentProfileUpdate_PasswordId);
         profileImageView = (CircleImageView) findViewById(R.id.studentProfileUpdate_ImageStudentId);
+
+        txtStudentRegular = (TextView)  findViewById(R.id.studentProfileUpdate_RegularId);
+
         updateButton = (Button) findViewById(R.id.studentProfileUpdate_ButtonId);
         loadingBar = new ProgressDialog(this);
     }
@@ -152,6 +157,8 @@ public class StudentProfileUpdate extends AppCompatActivity
                             String retrievePassword = snapshot.child("Password").getValue().toString();
                             String retrieveProfileImage = snapshot.child("ImageUrl").getValue().toString();
 
+                            String retrieveRegular = snapshot.child("Regularity").getValue().toString();
+
                             dept = snapshot.child("Dept").getValue().toString();
                             type = snapshot.child("Type").getValue().toString();
                             uid = snapshot.child("UID").getValue().toString();
@@ -167,6 +174,7 @@ public class StudentProfileUpdate extends AppCompatActivity
                             txtStudentAddress.setText(retrieveAddress);
                             txtStudentEmail.setText(retrieveEmail);
                             txtStudentPassword.setText(retrievePassword);
+                            txtStudentRegular.setText(retrieveRegular);
                             Picasso.get().load(retrieveProfileImage).into(profileImageView);
                         }
                         else
@@ -194,315 +202,375 @@ public class StudentProfileUpdate extends AppCompatActivity
         email = txtStudentEmail.getText().toString();
         password = txtStudentPassword.getText().toString();
 
+        regular = txtStudentRegular.getText().toString();
+
+
         if(TextUtils.isEmpty(fullName))
         {
             Toast.makeText(this, "Please enter full name", Toast.LENGTH_SHORT).show();
         }
 
-        if(TextUtils.isEmpty(id))
+        else if(TextUtils.isEmpty(id))
         {
             Toast.makeText(this, "Please enter ID", Toast.LENGTH_SHORT).show();
         }
 
-        if(TextUtils.isEmpty(batch))
+        else if(TextUtils.isEmpty(batch))
         {
             Toast.makeText(this, "Please enter batch", Toast.LENGTH_SHORT).show();
         }
 
-        if(TextUtils.isEmpty(session))
+        else if(TextUtils.isEmpty(session))
         {
             Toast.makeText(this, "Please enter session", Toast.LENGTH_SHORT).show();
         }
 
-        if(TextUtils.isEmpty(phone))
+
+        else if(TextUtils.isEmpty(regular))
+        {
+            Toast.makeText(this, "Please enter Regular/Irregular-1/Irregular-2", Toast.LENGTH_SHORT).show();
+        }
+
+        else if((!regular.equals("Regular")) && (!regular.equals("Irregular-1")) && (!regular.equals("Irregular-2")))
+        {
+            Toast.makeText(this, "Please enter Regular/Irregular-1/Irregular-2 Correctly", Toast.LENGTH_SHORT).show();
+        }
+
+
+        else if(TextUtils.isEmpty(phone))
         {
             Toast.makeText(this, "Please enter phone No.", Toast.LENGTH_SHORT).show();
         }
 
-        if(TextUtils.isEmpty(guardianPhone))
+        else if(TextUtils.isEmpty(guardianPhone))
         {
             Toast.makeText(this, "Please enter guardian phone No.", Toast.LENGTH_SHORT).show();
         }
 
-        if(TextUtils.isEmpty(address))
+        else if(TextUtils.isEmpty(address))
         {
             Toast.makeText(this, "Please enter current address", Toast.LENGTH_SHORT).show();
         }
 
-        if(TextUtils.isEmpty(email))
+        else if(TextUtils.isEmpty(email))
         {
             Toast.makeText(this, "Please enter email address", Toast.LENGTH_SHORT).show();
         }
 
-        if(TextUtils.isEmpty(password))
+        else if(TextUtils.isEmpty(password))
         {
             Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show();
         }
 
-        if(password.length() < 6 || password.length() >12)
+        else if(password.length() < 6 || password.length() >12)
         {
             Toast.makeText(this, "Password length should be 6 to 12", Toast.LENGTH_SHORT).show();
         }
 
 
-        if(flag == 1)
+        else
         {
 
-            StorageReference storageRef = FirebaseStorage.getInstance().getReference().child("User Profile Images").child(currentUserID+".jpg");
-            storageRef.delete()
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void unused)
-                        {
-                            Toast.makeText(StudentProfileUpdate.this, "Image is Deleted", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
-            dataStore = FirebaseDatabase.getInstance().getReference().child("UsersVerified").child(currentUserID);
-            filePath = userProfileImagesRef.child(currentUserID + ".jpg");
-
-
-            filePath.putFile(userImageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>()
+            if(flag == 1)
             {
-                @Override
-                public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task)
-                {
-                    if(task.isSuccessful())
-                    {
-                        filePath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+
+                StorageReference storageRef = FirebaseStorage.getInstance().getReference().child("User Profile Images").child(currentUserID+".jpg");
+                storageRef.delete()
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
-                            public void onSuccess(Uri uri)
+                            public void onSuccess(Void unused)
                             {
-                                HashMap<String, Object> profileMap = new HashMap<>();
-                                profileMap.put("UID", uid);
-                                profileMap.put("FullName", fullName);
-                                profileMap.put("ID", id);
-                                profileMap.put("Batch", batch);
-                                profileMap.put("Session", session);
-                                profileMap.put("Phone", phone);
-                                profileMap.put("Guardian Phone", guardianPhone);
-                                profileMap.put("Address", address);
-                                profileMap.put("Email", email);
-                                profileMap.put("Password", password);
-                                profileMap.put("Type", type);
-                                profileMap.put("Level", level);
-                                profileMap.put("Dept", dept);
-                                profileMap.put("ImageUrl", String.valueOf(uri));
-
-
-                                RootRef.child("UsersVerified").child(currentUserID).updateChildren(profileMap)
-                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task)
-                                            {
-                                                if(task.isSuccessful())
-                                                {
-                                                    Toast.makeText(StudentProfileUpdate.this, "Database Updated Successfully", Toast.LENGTH_SHORT).show();
-                                                }
-                                                else
-                                                {
-                                                    String message = task.getException().toString();
-                                                    Toast.makeText(StudentProfileUpdate.this, "Error: " +message, Toast.LENGTH_SHORT).show();
-                                                }
-                                            }
-                                        });
-
-                                currentUser.updateEmail(email).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void unused)
-                                    {
-                                        Toast.makeText(StudentProfileUpdate.this, "Email Update Successful", Toast.LENGTH_SHORT).show();
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e)
-                                    {
-                                        Toast.makeText(StudentProfileUpdate.this, "Email Update Failed"+e, Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-
-
-                                currentUser.updatePassword(password).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void unused)
-                                    {
-                                        Toast.makeText(StudentProfileUpdate.this, "Password Update Successful", Toast.LENGTH_SHORT).show();
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e)
-                                    {
-                                        Toast.makeText(StudentProfileUpdate.this, "Password Update Failed"+e, Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-
-
-
-
-                                //Verified Students
-                                String batchQuery = batch+"_"+id;
-
-                                HashMap<String, Object> profileMapVerified = new HashMap<>();
-                                profileMapVerified.put("FullName", fullName);
-                                profileMapVerified.put("ID", id);
-                                profileMapVerified.put("Batch", batch);
-                                profileMapVerified.put("Session", session);
-                                profileMapVerified.put("Phone", phone);
-                                profileMapVerified.put("Guardian Phone", guardianPhone);
-                                profileMapVerified.put("Address", address);
-                                profileMapVerified.put("Email", email);
-                                profileMapVerified.put("Password", password);
-                                profileMapVerified.put("Type", type);
-                                profileMapVerified.put("Level", level);
-                                profileMapVerified.put("Dept", dept);
-                                profileMapVerified.put("ImageUrl", String.valueOf(uri));
-
-                                profileMapVerified.put("BatchQuery", batchQuery);
-
-                                RootRef.child("VerifiedStudents").child(currentUserID).updateChildren(profileMapVerified)
-                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task)
-                                            {
-                                                if(task.isSuccessful())
-                                                {
-                                                    Toast.makeText(StudentProfileUpdate.this, "Verified Database Updated Successfully", Toast.LENGTH_SHORT).show();
-                                                }
-                                                else
-                                                {
-                                                    String message = task.getException().toString();
-                                                    Toast.makeText(StudentProfileUpdate.this, "Error: " +message, Toast.LENGTH_SHORT).show();
-                                                }
-                                            }
-                                        });
-
+                                Toast.makeText(StudentProfileUpdate.this, "Image is Deleted", Toast.LENGTH_SHORT).show();
                             }
                         });
 
-                        Toast.makeText(StudentProfileUpdate.this, "Image Uploaded Successfully", Toast.LENGTH_SHORT).show();
-                    }
+                dataStore = FirebaseDatabase.getInstance().getReference().child("UsersVerified").child(currentUserID);
+                filePath = userProfileImagesRef.child(currentUserID + ".jpg");
 
-                    else
+
+                filePath.putFile(userImageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>()
+                {
+                    @Override
+                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task)
                     {
-                        String msg = task.getException().toString();
-                        Toast.makeText(StudentProfileUpdate.this, "Error: " +msg, Toast.LENGTH_SHORT).show();
+                        if(task.isSuccessful())
+                        {
+                            filePath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri)
+                                {
+                                    HashMap<String, Object> profileMap = new HashMap<>();
+                                    profileMap.put("UID", uid);
+                                    profileMap.put("FullName", fullName);
+                                    profileMap.put("ID", id);
+                                    profileMap.put("Batch", batch);
+                                    profileMap.put("Session", session);
+                                    profileMap.put("Phone", phone);
+                                    profileMap.put("Guardian Phone", guardianPhone);
+                                    profileMap.put("Address", address);
+                                    profileMap.put("Email", email);
+                                    profileMap.put("Password", password);
+                                    profileMap.put("Type", type);
+                                    profileMap.put("Level", level);
+                                    profileMap.put("Dept", dept);
+                                    profileMap.put("ImageUrl", String.valueOf(uri));
+                                    profileMap.put("Regularity",regular);
+
+
+                                    RootRef.child("UsersVerified").child(currentUserID).updateChildren(profileMap)
+                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task)
+                                                {
+                                                    if(task.isSuccessful())
+                                                    {
+                                                       // Toast.makeText(StudentProfileUpdate.this, "Database Updated Successfully", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                    else
+                                                    {
+                                                        String message = task.getException().toString();
+                                                        Toast.makeText(StudentProfileUpdate.this, "Error: " +message, Toast.LENGTH_SHORT).show();
+                                                    }
+                                                }
+                                            });
+
+                                    currentUser.updateEmail(email).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void unused)
+                                        {
+                                           // Toast.makeText(StudentProfileUpdate.this, "Email Update Successful", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e)
+                                        {
+                                            Toast.makeText(StudentProfileUpdate.this, "Email Update Failed"+e, Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+
+
+                                    currentUser.updatePassword(password).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void unused)
+                                        {
+                                           // Toast.makeText(StudentProfileUpdate.this, "Password Update Successful", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e)
+                                        {
+                                            Toast.makeText(StudentProfileUpdate.this, "Password Update Failed"+e, Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+
+
+
+
+                                    //Verified Students
+
+                                    batchQuery = batch+"_"+id;
+
+                                    batchInt = Integer.parseInt(batch);
+
+                                    if(regular.equals("Irregular-1"))
+                                    {
+                                        batchInt = batchInt + 1;
+                                        batchQuery = batchInt + "_"+id;
+                                    }
+
+                                    if(regular.equals("Irregular-2"))
+                                    {
+                                        batchInt = batchInt + 2;
+                                        batchQuery = batchInt + "_"+id;
+                                    }
+
+
+
+
+
+                                    HashMap<String, Object> profileMapVerified = new HashMap<>();
+                                    profileMapVerified.put("FullName", fullName);
+                                    profileMapVerified.put("ID", id);
+                                    profileMapVerified.put("Batch", batch);
+                                    profileMapVerified.put("Session", session);
+                                    profileMapVerified.put("Phone", phone);
+                                    profileMapVerified.put("Guardian Phone", guardianPhone);
+                                    profileMapVerified.put("Address", address);
+                                    profileMapVerified.put("Email", email);
+                                    profileMapVerified.put("Password", password);
+                                    profileMapVerified.put("Type", type);
+                                    profileMapVerified.put("Level", level);
+                                    profileMapVerified.put("Dept", dept);
+                                    profileMapVerified.put("ImageUrl", String.valueOf(uri));
+
+                                    profileMapVerified.put("Regularity", regular);
+                                    profileMapVerified.put("BatchQuery", batchQuery);
+
+                                    RootRef.child("VerifiedStudents").child(currentUserID).updateChildren(profileMapVerified)
+                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task)
+                                                {
+                                                    if(task.isSuccessful())
+                                                    {
+                                                       // Toast.makeText(StudentProfileUpdate.this, "Verified Database Updated Successfully", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                    else
+                                                    {
+                                                        String message = task.getException().toString();
+                                                        Toast.makeText(StudentProfileUpdate.this, "Error: " +message, Toast.LENGTH_SHORT).show();
+                                                    }
+                                                }
+                                            });
+
+                                }
+                            });
+
+                            //Toast.makeText(StudentProfileUpdate.this, "Image Uploaded Successfully", Toast.LENGTH_SHORT).show();
+                        }
+
+                        else
+                        {
+                            String msg = task.getException().toString();
+                            Toast.makeText(StudentProfileUpdate.this, "Error: " +msg, Toast.LENGTH_SHORT).show();
+                        }
                     }
-                }
-            });
+                });
 
 
 
-            //SendToStudentProfile();
+                //SendToStudentProfile();
 
-        }
-
-
-
-        if(flag == 0)
-        {
-            HashMap<String, Object> profileMap = new HashMap<>();
-            profileMap.put("UID", uid);
-            profileMap.put("FullName", fullName);
-            profileMap.put("ID", id);
-            profileMap.put("Batch", batch);
-            profileMap.put("Session", session);
-            profileMap.put("Phone", phone);
-            profileMap.put("Guardian Phone", guardianPhone);
-            profileMap.put("Address", address);
-            profileMap.put("Email", email);
-            profileMap.put("Password", password);
-            profileMap.put("Type", type);
-            profileMap.put("Level", level);
-            profileMap.put("Dept", dept);
-            profileMap.put("ImageUrl", image);
+            }
 
 
-            RootRef.child("UsersVerified").child(currentUserID).updateChildren(profileMap)
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task)
-                        {
-                            if(task.isSuccessful())
+
+            if(flag == 0)
+            {
+                HashMap<String, Object> profileMap = new HashMap<>();
+                profileMap.put("UID", uid);
+                profileMap.put("FullName", fullName);
+                profileMap.put("ID", id);
+                profileMap.put("Batch", batch);
+                profileMap.put("Session", session);
+                profileMap.put("Phone", phone);
+                profileMap.put("Guardian Phone", guardianPhone);
+                profileMap.put("Address", address);
+                profileMap.put("Email", email);
+                profileMap.put("Password", password);
+                profileMap.put("Type", type);
+                profileMap.put("Level", level);
+                profileMap.put("Dept", dept);
+                profileMap.put("ImageUrl", image);
+                profileMap.put("Regularity",regular);
+
+
+                RootRef.child("UsersVerified").child(currentUserID).updateChildren(profileMap)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task)
                             {
-                                Toast.makeText(StudentProfileUpdate.this, "Database Updated Successfully", Toast.LENGTH_SHORT).show();
+                                if(task.isSuccessful())
+                                {
+                                   // Toast.makeText(StudentProfileUpdate.this, "Database Updated Successfully", Toast.LENGTH_SHORT).show();
+                                }
+                                else
+                                {
+                                    String message = task.getException().toString();
+                                    Toast.makeText(StudentProfileUpdate.this, "Error: " +message, Toast.LENGTH_SHORT).show();
+                                }
                             }
-                            else
+                        });
+
+                currentUser.updateEmail(email).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused)
+                    {
+                       // Toast.makeText(StudentProfileUpdate.this, "Email Update Successful", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e)
+                    {
+                        Toast.makeText(StudentProfileUpdate.this, "Email Update Failed"+e, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
+                currentUser.updatePassword(password).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused)
+                    {
+                       // Toast.makeText(StudentProfileUpdate.this, "Password Update Successful", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e)
+                    {
+                        Toast.makeText(StudentProfileUpdate.this, "Password Update Failed"+e, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
+                //Verified Students
+                batchQuery = batch+"_"+id;
+
+                batchInt = Integer.parseInt(batch);
+
+                if(regular.equals("Irregular-1"))
+                {
+                    batchInt = batchInt + 1;
+                    batchQuery = batchInt + "_"+id;
+                }
+
+                if(regular.equals("Irregular-2"))
+                {
+                    batchInt = batchInt + 2;
+                    batchQuery = batchInt + "_"+id;
+                }
+
+
+
+
+                HashMap<String, Object> profileMapVerified2 = new HashMap<>();
+                profileMapVerified2.put("FullName", fullName);
+                profileMapVerified2.put("ID", id);
+                profileMapVerified2.put("Batch", batch);
+                profileMapVerified2.put("Session", session);
+                profileMapVerified2.put("Phone", phone);
+                profileMapVerified2.put("Guardian Phone", guardianPhone);
+                profileMapVerified2.put("Address", address);
+                profileMapVerified2.put("Email", email);
+                profileMapVerified2.put("Password", password);
+                profileMapVerified2.put("Type", type);
+                profileMapVerified2.put("Level", level);
+                profileMapVerified2.put("Dept", dept);
+                profileMapVerified2.put("ImageUrl", image);
+
+                profileMapVerified2.put("Regularity",regular);
+                profileMapVerified2.put("BatchQuery", batchQuery);
+
+                RootRef.child("VerifiedStudents").child(currentUserID).updateChildren(profileMapVerified2)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task)
                             {
-                                String message = task.getException().toString();
-                                Toast.makeText(StudentProfileUpdate.this, "Error: " +message, Toast.LENGTH_SHORT).show();
+                                if(task.isSuccessful())
+                                {
+                                   // Toast.makeText(StudentProfileUpdate.this, "Verified Database Updated Successfully", Toast.LENGTH_SHORT).show();
+                                }
+                                else
+                                {
+                                    String message = task.getException().toString();
+                                    Toast.makeText(StudentProfileUpdate.this, "Error: " +message, Toast.LENGTH_SHORT).show();
+                                }
                             }
-                        }
-                    });
-
-            currentUser.updateEmail(email).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void unused)
-                {
-                    Toast.makeText(StudentProfileUpdate.this, "Email Update Successful", Toast.LENGTH_SHORT).show();
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e)
-                {
-                    Toast.makeText(StudentProfileUpdate.this, "Email Update Failed"+e, Toast.LENGTH_SHORT).show();
-                }
-            });
+                        });
 
 
-            currentUser.updatePassword(password).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void unused)
-                {
-                    Toast.makeText(StudentProfileUpdate.this, "Password Update Successful", Toast.LENGTH_SHORT).show();
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e)
-                {
-                    Toast.makeText(StudentProfileUpdate.this, "Password Update Failed"+e, Toast.LENGTH_SHORT).show();
-                }
-            });
+                //SendToStudentProfile();
 
-
-            //Verified Students
-            String batchQuery = batch+"_"+id;
-
-            HashMap<String, Object> profileMapVerified2 = new HashMap<>();
-            profileMapVerified2.put("FullName", fullName);
-            profileMapVerified2.put("ID", id);
-            profileMapVerified2.put("Batch", batch);
-            profileMapVerified2.put("Session", session);
-            profileMapVerified2.put("Phone", phone);
-            profileMapVerified2.put("Guardian Phone", guardianPhone);
-            profileMapVerified2.put("Address", address);
-            profileMapVerified2.put("Email", email);
-            profileMapVerified2.put("Password", password);
-            profileMapVerified2.put("Type", type);
-            profileMapVerified2.put("Level", level);
-            profileMapVerified2.put("Dept", dept);
-            profileMapVerified2.put("ImageUrl", image);
-
-            profileMapVerified2.put("BatchQuery", batchQuery);
-
-            RootRef.child("VerifiedStudents").child(currentUserID).updateChildren(profileMapVerified2)
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task)
-                        {
-                            if(task.isSuccessful())
-                            {
-                                Toast.makeText(StudentProfileUpdate.this, "Verified Database Updated Successfully", Toast.LENGTH_SHORT).show();
-                            }
-                            else
-                            {
-                                String message = task.getException().toString();
-                                Toast.makeText(StudentProfileUpdate.this, "Error: " +message, Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-
-
-            //SendToStudentProfile();
+            }
 
         }
 

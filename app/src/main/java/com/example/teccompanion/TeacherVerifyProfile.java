@@ -53,7 +53,7 @@ public class TeacherVerifyProfile extends AppCompatActivity
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle("Teacher Profile");
+        getSupportActionBar().setTitle("Teacher Profile Verify");
 
         RootRef = FirebaseDatabase.getInstance().getReference();
 
@@ -188,6 +188,7 @@ public class TeacherVerifyProfile extends AppCompatActivity
                             String retrieveType = snapshot.child("Type").getValue().toString();
                             String retrieveUID = snapshot.child("UID").getValue().toString();
                             String retrieveDept = snapshot.child("Dept").getValue().toString();
+                            String retrieveRegularity = snapshot.child("Regularity").getValue().toString();
 
                             HashMap<String, String> profileMap = new HashMap<>();
                             profileMap.put("UID", retrieveUID);
@@ -204,6 +205,8 @@ public class TeacherVerifyProfile extends AppCompatActivity
                             profileMap.put("Level", retrieveLevel);
                             profileMap.put("Dept", retrieveDept);
                             profileMap.put("ImageUrl", retrieveProfileImage);
+
+                            profileMap.put("Regularity",retrieveRegularity);
 
                             RootRef.child("UsersVerified").child(receivedUserID)
                                     .setValue(profileMap)
@@ -252,6 +255,8 @@ public class TeacherVerifyProfile extends AppCompatActivity
                                             }
                                         }
                                     });
+
+
 
                         }
                         else

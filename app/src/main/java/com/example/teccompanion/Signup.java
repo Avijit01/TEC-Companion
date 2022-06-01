@@ -11,8 +11,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,8 +39,8 @@ public class Signup extends AppCompatActivity
 {
     private Button createAccountButton;
     private CircleImageView userImage;
-    private EditText userFullName, userId, userBatch, userSession, userPhone, userGuardianPhone, userCurrentAddress, userEmail, userPassword;
-    private String fullName, id, batch, session, phone, guardianPhone, currentAddress, email, password, userType, level;
+    private EditText userFullName, userId, userBatch, userSession, userPhone, userGuardianPhone, userCurrentAddress, userEmail, userPassword, userRegular;
+    private String fullName, id, batch, session, regular, phone, guardianPhone, currentAddress, email, password, userType, level;
     private TextView alreadyHaveAnAccount;
     private Toolbar mToolbar;
 
@@ -54,6 +56,8 @@ public class Signup extends AppCompatActivity
     private DatabaseReference dataStore;
     private int flag = 0;
     private String dept;
+
+    private int batchInt;
 
 
     @Override
@@ -74,6 +78,9 @@ public class Signup extends AppCompatActivity
 
 
         InitializeFields();
+
+
+
 
         userImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,6 +116,7 @@ public class Signup extends AppCompatActivity
         id = userId.getText().toString();
         batch = userBatch.getText().toString();
         session = userSession.getText().toString();
+        regular = userRegular.getText().toString();
         phone = userPhone.getText().toString();
         guardianPhone = userGuardianPhone.getText().toString();
         currentAddress = userCurrentAddress.getText().toString();
@@ -116,6 +124,9 @@ public class Signup extends AppCompatActivity
         password = userPassword.getText().toString();
         userType = "Student";
         level = "0";
+
+        batchInt = Integer.parseInt(batch);
+
 
         if(TextUtils.isEmpty(fullName))
         {
@@ -132,10 +143,23 @@ public class Signup extends AppCompatActivity
             Toast.makeText(this, "Please enter batch", Toast.LENGTH_SHORT).show();
         }
 
+
         if(TextUtils.isEmpty(session))
         {
             Toast.makeText(this, "Please enter session", Toast.LENGTH_SHORT).show();
         }
+
+
+        if(TextUtils.isEmpty(regular))
+        {
+            Toast.makeText(this, "Please enter Regular/Irregular-1/Irregular-2", Toast.LENGTH_SHORT).show();
+        }
+
+        if((!regular.equals("Regular")) && (!regular.equals("Irregular-1")) && (!regular.equals("Irregular-2")))
+        {
+            Toast.makeText(this, "Please enter Regular/Irregular-1/Irregular-2 Correctly", Toast.LENGTH_SHORT).show();
+        }
+
 
         if(TextUtils.isEmpty(phone))
         {
@@ -220,6 +244,8 @@ public class Signup extends AppCompatActivity
                                                     profileMap.put("Dept", dept);
                                                     profileMap.put("ImageUrl", String.valueOf(uri));
 
+                                                    profileMap.put("Regularity",regular);
+
 
                                                     dataStore.setValue(profileMap)
                                                             .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -251,7 +277,6 @@ public class Signup extends AppCompatActivity
                                     }
                                 });
 
-/**/
 
 
 
@@ -330,6 +355,9 @@ public class Signup extends AppCompatActivity
         alreadyHaveAnAccount = (TextView) findViewById(R.id.alreadyHaveAnAccountId);
         loadingBar = new ProgressDialog(this);
         userImage = (CircleImageView) findViewById(R.id.circularImageStudentId);
+
+        userRegular = (EditText) findViewById(R.id.signupRegularId);
+
     }
 
 
